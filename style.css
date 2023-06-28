@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    font-size: larger;
+}
+html{
+    min-height: 100vh;
+}
+
+body{
+    position: relative;
+    overflow: hidden;
+    background-color: #313131;
+}
+
+.grid-container{
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(21, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-row-gap: 0px;
+    z-index: 0;
+}
+
+.gridItem{
+    border: 0.3px solid #ffffff40;
+    z-index: inherit;
+}
+
+.root{
+    border: 2px solid #66ff00;
+    background-color: #000000;
+    box-shadow: rgba(21, 255, 0, 0.25) 0px 15px 55px, rgba(81, 255, 0, 0.12) 0px -12px 30px, rgba(47, 255, 0, 0.12) 0px 4px 6px, rgba(64, 255, 0, 0.198) 0px 12px 13px, rgba(0, 255, 0, 0.09) 0px -3px 5px;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.decision{
+    background-color: #000000;
+    border: 2px solid #fff;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 15px 55px, rgba(255, 255, 255, 0.12) 0px -12px 30px, rgba(255, 255, 255, 0.12) 0px 4px 6px, rgba(255, 255, 255, 0.198) 0px 12px 13px, rgba(255, 255, 255, 0.09) 0px -3px 5px;
+}
+
+.cost{
+    background-color: #000000;
+    border: 2px solid #ff0000;
+    box-shadow: rgba(255, 0, 0, 0.25) 0px 15px 55px, rgba(255, 0, 0, 0.12) 0px -12px 30px, rgba(255, 0, 0, 0.12) 0px 4px 6px, rgba(255, 0, 0, 0.198) 0px 12px 13px, rgba(255, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 50%;
+}
+
+.path{
+    /* border: 3px solid rgba(255, 0, 0, 0.431); */
+    background-color: #ff000055;
+}
+
+
+/*  */

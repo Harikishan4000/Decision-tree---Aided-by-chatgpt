@@ -1,0 +1,129 @@
+[
+    {
+      "Id": 0,
+      "Name": "Facility Size",
+      "Type": "Decision",
+      "Level": 0,
+      "Parent": null,
+      "Probability": null,
+      "Payoff": null
+    },
+    {
+      "Id": 1,
+      "Name": "Small Facility",
+      "Type": "Decision",
+      "Level": 1,
+      "Parent": 0,
+      "Probability": null,
+      "Payoff": null
+    },
+    {
+      "Id": 2,
+      "Name": "High Demand",
+      "Type": "Decision",
+      "Level": 2,
+      "Parent": 1,
+      "Probability": 60,
+      "Payoff": null
+    },
+    {
+      "Id": 3,
+      "Name": "No Expansion",
+      "Type": "Cost",
+      "Level": 3,
+      "Parent": 2,
+      "Probability": null,
+      "Payoff": 223000
+    },
+    {
+      "Id": 4,
+      "Name": "Expand",
+      "Type": "Cost",
+      "Level": 3,
+      "Parent": 2,
+      "Probability": null,
+      "Payoff": 270000
+    },
+    {
+      "Id": 5,
+      "Name": "Low Demand",
+      "Type": "Decision",
+      "Level": 2,
+      "Parent": 1,
+      "Probability": 40,
+      "Payoff": null
+    },
+    {
+      "Id": 6,
+      "Name": "No Reason to Expand",
+      "Type": "Cost",
+      "Level": 3,
+      "Parent": 5,
+      "Probability": null,
+      "Payoff": 200000
+    },
+    {
+      "Id": 7,
+      "Name": "Large Facility",
+      "Type": "Decision",
+      "Level": 1,
+      "Parent": 0,
+      "Probability": null,
+      "Payoff": null
+    },
+    {
+      "Id": 8,
+      "Name": "Low Demand",
+      "Type": "Decision",
+      "Level": 2,
+      "Parent": 7,
+      "Probability": 40,
+      "Payoff": null
+    },
+    {
+      "Id": 9,
+      "Name": "Do Nothing",
+      "Type": "Cost",
+      "Level": 3,
+      "Parent": 8,
+      "Probability": null,
+      "Payoff": 40000
+    },
+    {
+      "Id": 10,
+      "Name": "Advertise",
+      "Type": "Decision",
+      "Level": 3,
+      "Parent": 8,
+      "Probability": null,
+      "Payoff": null
+    },
+    {
+      "Id": 11,
+      "Name": "Modest",
+      "Type": "Cost",
+      "Level": 4,
+      "Parent": 10,
+      "Probability": 30,
+      "Payoff": 20000
+    },
+    {
+      "Id": 12,
+      "Name": "Sizeable",
+      "Type": "Cost",
+      "Level": 4,
+      "Parent": 10,
+      "Probability": 70,
+      "Payoff": 220000
+    },
+    {
+      "Id": 13,
+      "Name": "High Demand",
+      "Type": "Cost",
+      "Level": 2,
+      "Parent": 7,
+      "Probability": null,
+      "Payoff": 800000
+    }
+  ]
+  
