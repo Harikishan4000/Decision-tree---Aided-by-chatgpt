@@ -2,7 +2,7 @@
     {
       "Id": 0,
       "Name": "Facility Size",
-      "Type": "Decision",
+      "Type": "Root",
       "Level": 0,
       "Parent": null,
       "Probability": null,

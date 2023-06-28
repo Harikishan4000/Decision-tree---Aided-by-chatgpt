@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
-    font-size: larger;
+    font-size: smaller;
 }
 html{
     min-height: 100vh;
@@ -46,14 +46,28 @@ body{
     background-color: #000000;
     border: 2px solid #fff;
     box-shadow: rgba(255, 255, 255, 0.25) 0px 15px 55px, rgba(255, 255, 255, 0.12) 0px -12px 30px, rgba(255, 255, 255, 0.12) 0px 4px 6px, rgba(255, 255, 255, 0.198) 0px 12px 13px, rgba(255, 255, 255, 0.09) 0px -3px 5px;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .cost{
     background-color: #000000;
     border: 2px solid #ff0000;
     box-shadow: rgba(255, 0, 0, 0.25) 0px 15px 55px, rgba(255, 0, 0, 0.12) 0px -12px 30px, rgba(255, 0, 0, 0.12) 0px 4px 6px, rgba(255, 0, 0, 0.198) 0px 12px 13px, rgba(255, 0, 0, 0.09) 0px -3px 5px;
     border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .path{
     /* border: 3px solid rgba(255, 0, 0, 0.431); */
