@@ -5,6 +5,10 @@
     font-family: 'Montserrat';
     font-size: larger;
 }
+
+:root{
+    --id:10;
+}
 html{
     min-height: 100vh;
 }
@@ -16,12 +20,14 @@ body{
 }
 
 .grid-container{
-    width: 100%;
-    min-height: 100vh;
+    margin: 10px;
+    width: 98%;
+    min-height: 98vh;
     display: grid;
-    grid-template-columns: repeat(21, 1fr);
+    grid-template-columns: repeat(25, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    grid-row-gap: 0px;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
     z-index: 0;
 }
 
@@ -82,4 +88,28 @@ body{
     background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   }
 
-/*  */
+/*  Toggle details*/
+
+.node{
+    position: relative;
+}
+
+.node:hover{
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply;
+    /* color: #333; */
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.node.details::before{
+    font-size: medium;
+    align-items: baseline;
+    text-align: start;
+    content: attr(details);
+    position: absolute;
+    width: 210%;
+    min-height: 100%;
+    top:0;
+    left: -220%;
+    background-color: #9777bf;
+}

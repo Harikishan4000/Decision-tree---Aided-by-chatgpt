@@ -1,31 +1,40 @@
 import data from './example1.json' assert { type: 'json' };
 const grid=document.querySelector(".grid-container");
-
-for(let i=0; i<252;i++){
+let totDivs= 300;
+for(let i=0; i<totDivs;i++){
     var new_div=document.createElement("div");
     new_div.classList.add("gridItem");
     new_div.classList.add("gridItem"+String(i));
+    new_div.setAttribute("details", " ")
     grid.appendChild(new_div);
 }
-
-const root=document.querySelector(".gridItem10");
-root.classList.add("root");
 
 
 // JSON SCRIPT READ
 
-root.innerHTML= data[0].Id;
+
 let numOfNodesAtLevel=[];
 let col=[];
 let colDist=[];
 let locs=[]; //locations of all nodes
-
+let totDivsInRow=25; //Number of columns
 let maxLevel=0;
+
+
+const root=document.querySelector(".gridItem"+String(Math.floor(totDivsInRow/2)));
+root.classList.add("root");
+// root.classList.add("decision");
+root.classList.add("node");
+var dets="id:"+data[0].id+" Name:"+data[0].name+" Prob:"+data[0].probability+" Payoff:"+data[0].payoff;
+root.setAttribute("details", String(dets))
+root.innerHTML= data[0].id;
+
+console.log(".gridItem"+String(Math.floor(totDivsInRow/2)))
 
 //This loop is used to check maximum level of the nodes to divide the nodes equally
 for(let i=0;i<data.length;i++){
-    if(data[i].Level>maxLevel){
-        maxLevel=data[i].Level;
+    if(data[i].level>maxLevel){
+        maxLevel=data[i].level;
     }
     locs[i]=0;
 }
@@ -39,41 +48,50 @@ for(let i=0;i<=maxLevel;i++){
 
 // count number of nodes in each level
 for(let i=0;i<data.length;i++){
-    numOfNodesAtLevel[data[i].Level]++;
+    numOfNodesAtLevel[data[i].level]++;
 
 }
 for(let i=0;i<=maxLevel;i++){
-    col[i]=Math.floor(21/(numOfNodesAtLevel[i]+1));
+    col[i]=Math.floor(totDivsInRow/(numOfNodesAtLevel[i]+1));
     // console.log(col[i])
 }
 
 
 //row dist between levels
 let rowInc=Math.ceil(12/maxLevel-1);
-locs[data[0].Id]=10;
+locs[data[0].id]=Math.floor(totDivsInRow/2);
 
 
 for(let i=0;i<data.length;i++){
-    let row=rowInc*data[i].Level*21;
-    colDist[data[i].Level]+=col[data[i].Level];
-    // console.log(row+col[data[i].Level])
+    let row=rowInc*data[i].level*totDivsInRow;
+    colDist[data[i].level]+=col[data[i].level];
+    // console.log(row+col[data[i].level])
     // console.log(col[i])
     // console.log(row)
 
 
-    if(data[i].Type=="Decision"){
-        let temp=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].Level])));
+    if(data[i].type=="Decision"){
+        let temp=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp.classList.add("decision");
-        temp.innerHTML= data[i].Id;
+        temp.classList.add("node");
+        // temp.classList.add("details");
+        var dets="id:"+data[i].id+" Name:"+data[i].name+" Prob:"+data[i].probability+" Payoff:"+data[i].payoff;
+        temp.setAttribute("details", String(dets))
+        temp.innerHTML= data[i].id;
         // var new_line=document.createElement("div");
-        locs[data[i].Id]=row-colDist[data[i].Level];
+        locs[data[i].id]=row-colDist[data[i].level];
+
         
     }
-    else if(data[i].Type=="Cost"){
-        let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].Level])));
+    else if(data[i].type=="Cost"){
+        let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp2.classList.add("cost");
-        temp2.innerHTML= data[i].Id;
-        locs[data[i].Id]=row-colDist[data[i].Level];    
+        temp2.classList.add("node");
+        // temp2.classList.add("details");
+        var dets="id:"+data[i].id+" Name:"+data[i].name+" Prob:"+data[i].probability+" Payoff:"+data[i].payoff;
+        temp2.setAttribute("details", String(dets))
+        temp2.innerHTML= data[i].id;
+        locs[data[i].id]=row-colDist[data[i].level];    
     }
 }
 
@@ -120,19 +138,34 @@ function adjustLine(from, to, line) {
 
   let linenum=0;
   for(let i=0; i<data.length;i++){
-      for(let j=0; j<data[i].Children.length;j++){
+      for(let j=0; j<data[i].children.length;j++){
         //Create new line b/w nodes
         var new_line=document.createElement("div");
         new_line.classList.add("line");
         new_line.classList.add("line"+String(linenum));
         grid.appendChild(new_line);
          adjustLine(
-            document.querySelector('.gridItem'+String(locs[data[i].Id])),
-            document.querySelector('.gridItem'+String(locs[data[i].Children[j]])),
+            document.querySelector('.gridItem'+String(locs[data[i].id])),
+            document.querySelector('.gridItem'+String(locs[data[i].children[j]])),
             document.querySelector('.line'+String(linenum++))
           );
-          console.log(locs[data[i].Children[j]]+" <- "+locs[data[i].Id]);
+          // console.log(locs[data[i].children[j]]+" <- "+locs[data[i].id]);
       
       
     }
   }
+
+  //On hovering node, gives node details
+  let node=document.querySelectorAll(".node");
+
+  for(let i=0;i<node.length;i++){
+    node[i].addEventListener("mouseenter", ()=>{
+      node[i].classList.add("details");
+      console.log("Hii")
+    })
+  
+    node[i].addEventListener("mouseleave", ()=>{
+      node[i].classList.remove("details");
+    })
+  }
+  

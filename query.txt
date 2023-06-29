@@ -15,4 +15,7 @@ parent: id of the parent
 children: which consists of the array of children for each node
 and also create an output of form,
 The output should mentions the decisions to be taken in just a couple of words and the all the  decisions that are made based on it to follow the parent decision with a preceding "->" along with the probability/percentage in parentheses and the cost nodes that are based on this decision should follow its parent decision with a preceding "->" along with the cost in parentheses.
-Make sure the root node's type is always "Root"
+Make sure the first node's type is always "Root".
+Make sure the current node's Id is added into the children array of the parent node.
+Each parent can have more than 2 children if required.
+Make sure the field names are in lowercase.
