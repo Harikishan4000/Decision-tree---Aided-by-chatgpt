@@ -1,0 +1,145 @@
+[
+  {
+    "Id": 0,
+    "Name": "Facility Size",
+    "Type": "Decision",
+    "Level": 0,
+    "Parent": null,
+    "Probability": null,
+    "Payoff": null,
+    "Children": [1, 7]
+  },
+  {
+    "Id": 1,
+    "Name": "Small Facility",
+    "Type": "Decision",
+    "Level": 1,
+    "Parent": 0,
+    "Probability": null,
+    "Payoff": null,
+    "Children": [2, 5]
+  },
+  {
+    "Id": 2,
+    "Name": "High Demand",
+    "Type": "Decision",
+    "Level": 2,
+    "Parent": 1,
+    "Probability": 60,
+    "Payoff": null,
+    "Children": [3, 4]
+  },
+  {
+    "Id": 3,
+    "Name": "No Expansion",
+    "Type": "Cost",
+    "Level": 3,
+    "Parent": 2,
+    "Probability": null,
+    "Payoff": 223000,
+    "Children": []
+  },
+  {
+    "Id": 4,
+    "Name": "Expand",
+    "Type": "Cost",
+    "Level": 3,
+    "Parent": 2,
+    "Probability": null,
+    "Payoff": 270000,
+    "Children": []
+  },
+  {
+    "Id": 5,
+    "Name": "Low Demand",
+    "Type": "Decision",
+    "Level": 2,
+    "Parent": 1,
+    "Probability": 40,
+    "Payoff": null,
+    "Children": [6]
+  },
+  {
+    "Id": 6,
+    "Name": "No Reason to Expand",
+    "Type": "Cost",
+    "Level": 3,
+    "Parent": 5,
+    "Probability": null,
+    "Payoff": 200000,
+    "Children": []
+  },
+  {
+    "Id": 7,
+    "Name": "Large Facility",
+    "Type": "Decision",
+    "Level": 1,
+    "Parent": 0,
+    "Probability": null,
+    "Payoff": null,
+    "Children": [8, 10]
+  },
+  {
+    "Id": 8,
+    "Name": "Low Demand",
+    "Type": "Decision",
+    "Level": 2,
+    "Parent": 7,
+    "Probability": 40,
+    "Payoff": null,
+    "Children": [9, 10]
+  },
+  {
+    "Id": 9,
+    "Name": "Do Nothing",
+    "Type": "Cost",
+    "Level": 3,
+    "Parent": 8,
+    "Probability": null,
+    "Payoff": 40000,
+    "Children": []
+  },
+  {
+    "Id": 10,
+    "Name": "Advertise",
+    "Type": "Decision",
+    "Level": 3,
+    "Parent": 8,
+    "Probability": null,
+    "Payoff": null,
+    "Children": [11, 12, 13]
+  },
+  {
+    "Id": 11,
+    "Name": "Modest",
+    "Type": "Cost",
+    "Level": 4,
+    "Parent": 10,
+    "Probability": 30,
+    "Payoff": 20000,
+    "Children": []
+  },
+  {
+    "Id": 12,
+    "Name": "Sizeable",
+    "Type": "Cost",
+    "Level": 4,
+    "Parent": 10,
+    "Probability": 70,
+    "Payoff": 220000,
+    "Children": []
+  },
+  {
+    "Id": 13,
+    "Name": "High Demand",
+    "Type": "Cost",
+    "Level": 2,
+    "Parent": 7,
+    "Probability": null,
+    "Payoff": 800000,
+    "Children": []
+  }
+]
+
+
+//Retailer to decide on small a large facility demand can be low(0.4) or high(0.6). It's small facility is built and demand proves to be high managers may choose not to expand that is pay of is 223000 alto expand pay of is 270000. If a small facility and demand is low no reason to expand that is pair of is 200000. If large facility and demand is low do nothing pay off is 40000 or to advertise either modest or sizable with probabilities 0.3 and 0.7 respectively. If it is modest pair of is 20000 if sizeable pay off is 220000 if a large facility is built with high demand pay off is 800000.

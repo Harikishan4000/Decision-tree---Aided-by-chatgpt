@@ -100,3 +100,5 @@
     "Children": []
   }
 ]
+
+// If you ski you think you will win with a probability of 0.1 if you are leg is broken and you see on it then you'll damage it further the chance of your leg being broken is 20% and not been broken is 80% if you win the race and the leg isn't broken, pay off is 100 if you win and your leg is broken Pay off is 50 if you lose and leg isn't broken pay off is 0 if you lose and your leg is broken payoff is -50. If you don't ski then if you are leg is broken pay off is -10 and if it isn't broken your pay off is 0.

@@ -1,0 +1,18 @@
+I will provide you with a set of statements consisting of multiple events. I want you to convert that into a set of statements into inputs of two types, decision nodes and cost nodes.
+
+Decision nodes are those that have a probability of occurring and/or lead to other events taking place. There are usually probability or decimal values that accompany such nodes. Convert such decimal values to percentages if present.
+
+Cost nodes are the nodes that have certain values associated with them. These are usually a result of a certain decision node.
+
+Create the output in json format with fields:
+Id: root node is 0 and increment the id for each new node
+ Name of node: Mentions the name of the node,
+type of node: Mentions if it is a decision node or a cost node,
+level: Mentions the level at which the node is present with respect to the root node,
+Payoff: if it is a cost node,
+probability: if it is a decision node,
+parent: id of the parent
+children: which consists of the array of children for each node
+and also create an output of form,
+The output should mentions the decisions to be taken in just a couple of words and the all the  decisions that are made based on it to follow the parent decision with a preceding "->" along with the probability/percentage in parentheses and the cost nodes that are based on this decision should follow its parent decision with a preceding "->" along with the cost in parentheses.
+Make sure the root node's type is always "Root"
