@@ -25,7 +25,7 @@ const root=document.querySelector(".gridItem"+String(Math.floor(totDivsInRow/2))
 root.classList.add("root");
 // root.classList.add("decision");
 root.classList.add("node");
-var dets="id:"+data[0].id+" Name:"+data[0].name+" Prob:"+data[0].probability+" Payoff:"+data[0].payoff;
+var dets="ID: "+data[0].id+" NAME:"+data[0].name+" PROB:"+data[0].probability+" PAYOFF:"+data[0].payoff;
 root.setAttribute("details", String(dets))
 root.innerHTML= data[0].id;
 
@@ -70,12 +70,12 @@ for(let i=0;i<data.length;i++){
     // console.log(row)
 
 
-    if(data[i].type=="Decision"){
+    if(data[i].type=="decision"){
         let temp=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp.classList.add("decision");
         temp.classList.add("node");
         // temp.classList.add("details");
-        var dets="id:"+data[i].id+" Name:"+data[i].name+" Prob:"+data[i].probability+" Payoff:"+data[i].payoff;
+        var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
         temp.setAttribute("details", String(dets))
         temp.innerHTML= data[i].id;
         // var new_line=document.createElement("div");
@@ -83,12 +83,12 @@ for(let i=0;i<data.length;i++){
 
         
     }
-    else if(data[i].type=="Cost"){
+    else if(data[i].type=="cost"){
         let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp2.classList.add("cost");
         temp2.classList.add("node");
         // temp2.classList.add("details");
-        var dets="id:"+data[i].id+" Name:"+data[i].name+" Prob:"+data[i].probability+" Payoff:"+data[i].payoff;
+        var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
         temp2.setAttribute("details", String(dets))
         temp2.innerHTML= data[i].id;
         locs[data[i].id]=row-colDist[data[i].level];    

@@ -92,6 +92,7 @@ body{
 
 .node{
     position: relative;
+    transition: 0.1s ease;
 }
 
 .node:hover{
@@ -99,7 +100,7 @@ body{
  background-blend-mode: multiply,multiply;
     /* color: #333; */
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.2);
 }
 .node.details::before{
     font-size: medium;
@@ -112,4 +113,27 @@ body{
     top:0;
     left: -220%;
     background-color: #9777bf;
+}
+
+
+
+/* FINAL RESULT */
+
+.result{
+    padding: 10px;
+    color: #fff;
+    width: 500px;
+    height: 100px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #2b12498d;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+    display: flex;
+    align-items: center;
+}
+
+.result h3{
+    font-weight: 100;
 }

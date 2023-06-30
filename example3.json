@@ -1,0 +1,103 @@
+[
+  {
+    "id": 0,
+    "name": "Root Node",
+    "type": "Root",
+    "level": 0,
+    "payoff": null,
+    "probability": null,
+    "parent": null,
+    "children": [1, 2]
+  },
+  {
+    "id": 1,
+    "name": "Ski Decision",
+    "type": "Decision",
+    "level": 1,
+    "payoff": null,
+    "probability": 10,
+    "parent": 0,
+    "children": [3, 4]
+  },
+  {
+    "id": 2,
+    "name": "No Ski Decision",
+    "type": "Decision",
+    "level": 1,
+    "payoff": null,
+    "probability": 90,
+    "parent": 0,
+    "children": [5]
+  },
+  {
+    "id": 3,
+    "name": "Win Decision",
+    "type": "Decision",
+    "level": 2,
+    "payoff": null,
+    "probability": 100,
+    "parent": 1,
+    "children": [6]
+  },
+  {
+    "id": 4,
+    "name": "Lose Decision",
+    "type": "Decision",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 1,
+    "children": [7, 8]
+  },
+  {
+    "id": 5,
+    "name": "Leg Broken Decision",
+    "type": "Decision",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 2,
+    "children": [9]
+  },
+  {
+    "id": 6,
+    "name": "Win with Intact Leg",
+    "type": "Cost",
+    "level": 3,
+    "payoff": "100",
+    "probability": null,
+    "parent": 3,
+    "children": []
+  },
+  {
+    "id": 7,
+    "name": "Leg Broken, Lose",
+    "type": "Cost",
+    "level": 3,
+    "payoff": "-50",
+    "probability": null,
+    "parent": 4,
+    "children": []
+  },
+  {
+    "id": 8,
+    "name": "Leg Intact, Lose",
+    "type": "Cost",
+    "level": 3,
+    "payoff": "0",
+    "probability": null,
+    "parent": 4,
+    "children": []
+  },
+  {
+    "id": 9,
+    "name": "Leg Broken",
+    "type": "Cost",
+    "level": 3,
+    "payoff": "-10",
+    "probability": null,
+    "parent": 5,
+    "children": []
+  }
+]
+

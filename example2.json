@@ -142,4 +142,3 @@
 ]
 
 
-//Retailer to decide on small a large facility demand can be low(0.4) or high(0.6). It's small facility is built and demand proves to be high managers may choose not to expand that is pay of is 223000 alto expand pay of is 270000. If a small facility and demand is low no reason to expand that is pair of is 200000. If large facility and demand is low do nothing pay off is 40000 or to advertise either modest or sizable with probabilities 0.3 and 0.7 respectively. If it is modest pair of is 20000 if sizeable pay off is 220000 if a large facility is built with high demand pay off is 800000.
