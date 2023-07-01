@@ -11,8 +11,8 @@
   },
   {
     "id": 1,
-    "name": "Ski Decision",
-    "type": "Decision",
+    "name": "Ski decision",
+    "type": "decision",
     "level": 1,
     "payoff": null,
     "probability": 10,
@@ -21,8 +21,8 @@
   },
   {
     "id": 2,
-    "name": "No Ski Decision",
-    "type": "Decision",
+    "name": "No Ski decision",
+    "type": "decision",
     "level": 1,
     "payoff": null,
     "probability": 90,
@@ -31,8 +31,8 @@
   },
   {
     "id": 3,
-    "name": "Win Decision",
-    "type": "Decision",
+    "name": "Win decision",
+    "type": "decision",
     "level": 2,
     "payoff": null,
     "probability": 100,
@@ -41,8 +41,8 @@
   },
   {
     "id": 4,
-    "name": "Lose Decision",
-    "type": "Decision",
+    "name": "Lose decision",
+    "type": "decision",
     "level": 2,
     "payoff": null,
     "probability": null,
@@ -51,8 +51,8 @@
   },
   {
     "id": 5,
-    "name": "Leg Broken Decision",
-    "type": "Decision",
+    "name": "Leg Broken decision",
+    "type": "decision",
     "level": 2,
     "payoff": null,
     "probability": null,
@@ -62,7 +62,7 @@
   {
     "id": 6,
     "name": "Win with Intact Leg",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "payoff": "100",
     "probability": null,
@@ -72,7 +72,7 @@
   {
     "id": 7,
     "name": "Leg Broken, Lose",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "payoff": "-50",
     "probability": null,
@@ -82,7 +82,7 @@
   {
     "id": 8,
     "name": "Leg Intact, Lose",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "payoff": "0",
     "probability": null,
@@ -92,7 +92,7 @@
   {
     "id": 9,
     "name": "Leg Broken",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "payoff": "-10",
     "probability": null,

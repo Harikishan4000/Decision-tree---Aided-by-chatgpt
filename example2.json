@@ -12,7 +12,7 @@
   {
     "id": 1,
     "name": "Small Facility",
-    "type": "Decision",
+    "type": "decision",
     "level": 1,
     "parent": 0,
     "probability": null,
@@ -22,7 +22,7 @@
   {
     "id": 2,
     "name": "High Demand",
-    "type": "Decision",
+    "type": "decision",
     "level": 2,
     "parent": 1,
     "probability": 60,
@@ -32,7 +32,7 @@
   {
     "id": 3,
     "name": "No Expansion",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "parent": 2,
     "probability": null,
@@ -42,7 +42,7 @@
   {
     "id": 4,
     "name": "Expand",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "parent": 2,
     "probability": null,
@@ -52,7 +52,7 @@
   {
     "id": 5,
     "name": "Low Demand",
-    "type": "Decision",
+    "type": "decision",
     "level": 2,
     "parent": 1,
     "probability": 40,
@@ -62,7 +62,7 @@
   {
     "id": 6,
     "name": "No Reason to Expand",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "parent": 5,
     "probability": null,
@@ -72,7 +72,7 @@
   {
     "id": 7,
     "name": "Large Facility",
-    "type": "Decision",
+    "type": "decision",
     "level": 1,
     "parent": 0,
     "probability": null,
@@ -82,7 +82,7 @@
   {
     "id": 8,
     "name": "Low Demand",
-    "type": "Decision",
+    "type": "decision",
     "level": 2,
     "parent": 7,
     "probability": 40,
@@ -92,7 +92,7 @@
   {
     "id": 9,
     "name": "Do Nothing",
-    "type": "Cost",
+    "type": "cost",
     "level": 3,
     "parent": 8,
     "probability": null,
@@ -102,7 +102,7 @@
   {
     "id": 10,
     "name": "Advertise",
-    "type": "Decision",
+    "type": "decision",
     "level": 3,
     "parent": 8,
     "probability": null,
@@ -112,7 +112,7 @@
   {
     "id": 11,
     "name": "Modest",
-    "type": "Cost",
+    "type": "cost",
     "level": 4,
     "parent": 10,
     "probability": 30,
@@ -122,7 +122,7 @@
   {
     "id": 12,
     "name": "Sizeable",
-    "type": "Cost",
+    "type": "cost",
     "level": 4,
     "parent": 10,
     "probability": 70,
@@ -132,7 +132,7 @@
   {
     "id": 13,
     "name": "High Demand",
-    "type": "Cost",
+    "type": "cost",
     "level": 2,
     "parent": 7,
     "probability": null,

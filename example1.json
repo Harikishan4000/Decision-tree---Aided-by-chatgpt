@@ -2,7 +2,7 @@
     {
       "id": 0,
       "name": "Root",
-      "type": "Root",
+      "type": "root",
       "level": 0,
       "probability": null,
       "payoff": null,

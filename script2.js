@@ -1,4 +1,4 @@
-import jsondata from './example1.json' assert { type: 'json' };
+import jsondata from './test.json' assert { type: 'json' };
 var data={...jsondata}
 const grid=document.querySelector(".grid-container");
 let totDivs= 300;
@@ -69,7 +69,9 @@ locs[data[0].id]=Math.floor(totDivsInRow/2);
 for(let i=0;i<Object.keys(data).length;i++){
     let row=rowInc*data[i].level*totDivsInRow;
     colDist[data[i].level]+=col[data[i].level];
-    
+    // console.log(row+col[data[i].level])
+    // console.log(col[i])
+    // console.log(row)
 
 
     if(data[i].type=="decision"){
@@ -80,7 +82,7 @@ for(let i=0;i<Object.keys(data).length;i++){
         var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
         temp.setAttribute("details", String(dets))
         temp.innerHTML= data[i].id;
-        
+        // var new_line=document.createElement("div");
         locs[data[i].id]=row-colDist[data[i].level];
 
         
@@ -89,7 +91,7 @@ for(let i=0;i<Object.keys(data).length;i++){
         let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp2.classList.add("cost");
         temp2.classList.add("node");
-        
+        // temp2.classList.add("details");
         var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
         temp2.setAttribute("details", String(dets))
         temp2.innerHTML= data[i].id;
@@ -99,7 +101,7 @@ for(let i=0;i<Object.keys(data).length;i++){
       let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
       temp2.classList.add("leaf");
       temp2.classList.add("node");
-      
+      // temp2.classList.add("details");
       var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
       temp2.setAttribute("details", String(dets))
       temp2.innerHTML= "<p>"+data[i].id+"</p>";
@@ -163,7 +165,7 @@ function adjustLine(from, to, line) {
             document.querySelector('.gridItem'+String(locs[data[i].children[j]])),
             document.querySelector('.line'+String(linenum++))
           );
-          
+          // console.log(locs[data[i].children[j]]+" <- "+locs[data[i].id]);
     }
   }
 
@@ -197,7 +199,7 @@ function adjustLine(from, to, line) {
           child=data[i].children[j];
           if(data[child].probability){
             result+=data[child].probability*data[child].payoff;
-            
+            // console.log("Children have probab ", i, result);
             flag=0;
             
           }
@@ -207,7 +209,7 @@ function adjustLine(from, to, line) {
           }
           else{
             flag=1; //everything is fine
-            
+            // console.log("Children do not have probab");
             break;
           }
          }
@@ -241,10 +243,10 @@ function adjustLine(from, to, line) {
          }
       }
       else{
-        
+        // console.log(data[0].payoff);
         console.log("Kuch gadbad hua he");
         for(j=0;j<Object.keys(data).length;j++){
-          
+          // console.log(j+"   "+data[j].payoff)
         }
       }
     }
@@ -270,3 +272,29 @@ function adjustLine(from, to, line) {
         console.log("Caught error by code: "+ err);
       }
     })
+
+
+
+
+  // let pay=data[i].payoff;
+  // let prob=data[i].probability;
+  // let result=pay*prob;
+
+
+
+  // if(data[i].type=="decision"){
+  //   noOfChild=0;
+
+  //   for(j=0;j<Object.keys(data).length;j++){
+  //     if(data[i].children.includes(j)){
+  //       if(noOfChild>=data[i].children.length){
+  //         break;
+  //       }
+  //       noOfChild++;
+  //       if(data[j].payoff>temp){
+  //         temp=data[j].payoff;
+  //       }
+  //     }
+  //    }
+  //    data[i].payoff=temp;
+  // }

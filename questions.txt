@@ -1,7 +1,32 @@
-If you ski you think you will win with a probability of 0.1 if you are leg is broken and you see on it then you'll damage it further the chance of your leg being broken is 20% and not been broken is 80% if you win the race and the leg isn't broken, pay off is 100 if you win and your leg is broken Pay off is 50 if you lose and leg isn't broken pay off is 0 if you lose and your leg is broken payoff is -50. If you don't ski then if you are leg is broken pay off is -10 and if it isn't broken your pay off is 0.
+If you ski you will win with a probability of 0.1 and lose with a probability of 0.9.
+The chance of your leg being broken is 20% and not been broken is 80%. 
+If you win the race and the leg isn't broken, pay off is 100.
+If you win and your leg is broken Pay off is 50.
+If you lose and leg isn't broken pay off is 0.
+If you lose and your leg is broken payoff is -50.
+If you don't ski then if you are leg is broken pay off is -10.
+If it isn't broken your pay off is 0.
 
 
-Retailer to decide on small a large facility demand can be low(0.4) or high(0.6). It's small facility is built and demand proves to be high managers may choose not to expand that is pay of is 223000 alto expand pay of is 270000. If a small facility and demand is low no reason to expand that is pair of is 200000. If large facility and demand is low do nothing pay off is 40000 or to advertise either modest or sizable with probabilities 0.3 and 0.7 respectively. If it is modest pair of is 20000 if sizeable pay off is 220000 if a large facility is built with high demand pay off is 800000.
+
+
+Should choose between building small or large facility.
+Demand can be low with a probability of 0.4. Demand can be high with a probability of 0.6.
+If small facility is built and demand is high, three options:
+1. If no expand payoff is 200000.
+2. If expand payoff 270000.
+3. If wait for a while payoff is 223000.
+If small facility is built and demand is low, one option:
+1. no expand with a payoff of 200000.
+If large facility is built and demand is low, two options:
+1. If do nothing payoff is 40000.
+2. If advertise we have two options: 
+2.1. Modest with probability of 0.3 and payoff of 200000.
+2.2. Sizable with a probaility of 0.7 and payoff of 220000.
+If large facility is built and demand is high, one option:
+1. Do nothing payoff is 800000
+
+Retailer to decide on small a large facility demand can be low(0.4) or high(0.6). It's small facility is built and demand proves to be high managers may choose not to expand that is pay of is 223000 alto expand pay of is 270000. If a small facility and demand is low no reason to expand that is payoff is 200000. If large facility and demand is low do nothing pay off is 40000 or to advertise either modest or sizable with probabilities 0.3 and 0.7 respectively. If it is modest pair of is 20000 if sizeable pay off is 220000 if a large facility is built with high demand pay off is 800000.
 
 
 A manager must decide on the size of a video arcade to construct. The manager has narrowed the choices to two: large or small. Demand can be either low or high with probabilities of 0.4 and 0.6 respectively. If small facility is built, and at low demand the payoff is Rs 40000. If small facility is built and demand is high then there are three options again: do nothing (Rs 40000) and do overtime (Rs 55000) and expand (Rs 55000).  If building large facility is considered and the demand is low you have two options: do nothing (Rs 10000) and reduce prices (Rs 50000). If large facility is built and demand is high the payoff is Rs 70000.

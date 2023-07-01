@@ -1,21 +1,38 @@
-I will provide you with a set of statements consisting of multiple events. I want you to convert that into a set of statements into inputs of two types, decision nodes and cost nodes.
-
-Decision nodes are those that have a probability of occurring and/or lead to other events taking place. There are usually probability or decimal values that accompany such nodes. Convert such decimal values to percentages if present.
-
-Cost nodes are the nodes that have certain values associated with them. These are usually a result of a certain decision node.
-
+Your job is to convert the a set of statements which represent certain events into decision tree nodes and convert them into json format. Create a decision tree node for each statement. There must be three types of nodes, decision node and cost node and leaf node.
+Decision nodes are those that lead to other events taking place. They do not have probabilities attached to them.
+Cost nodes are the nodes whose children have certain probabilities associated with them. 
+The leaf nodes are the nodes that do not have any children. They always This can be either positive or negative values.  Make sure to create leaf nodes if required.
+Each node can have only one parent node but a parent can have multiple children nodes.
 Create the output in json format with fields:
-Id: root node is 0 and increment the id for each new node
- Name of node: Mentions the name of the node,
-type of node: Mentions if it is a decision node or a cost node,
+id: root node is 0 and increment the id for each new node
+name of node: Mentions the name of the node,
+type of node: Mentions if it is "cost", "decision", "root" or "leaf"
 level: Mentions the level at which the node is present with respect to the root node,
-Payoff: if it is a cost node,
+payoff: if it is a cost node,
 probability: if it is a decision node,
-parent: id of the parent
-children: which consists of the array of children for each node
-and also create an output of form,
-The output should mentions the decisions to be taken in just a couple of words and the all the  decisions that are made based on it to follow the parent decision with a preceding "->" along with the probability/percentage in parentheses and the cost nodes that are based on this decision should follow its parent decision with a preceding "->" along with the cost in parentheses.
-Make sure the first node's type is always "Root".
-Make sure the current node's Id is added into the children array of the parent node.
-Each parent can have more than 2 children if required.
-Make sure the field names are in lowercase.
+parent: id of the parent of the current node
+children: which consists of the array of the ids of the children of the current node, empty array if it has no children
+
+Note that while creating the json script: 
+1. Make sure all characters are lowercase
+2. The first node is always of type "root"
+3. If a node has a parent, its id should be present in the children array of only that parent and nothing else.
+4. respond only with the json script and nothing else
+5. Make sure all the fields of the json exist at all times.
+6. Name the nodes appropriately.
+7. Don't make new nodes just for the payoffs, add the payoff to the appropriate existing node
+8. If there is not payoff given with the node, keep it as null.
+9. If there is no probability given with the node, keep it as null.
+10.  Convert all probabilities to decimal values.
+11. Make sure the children array is filled if the node has children, or if any other node refers to it as a parent
+12. If the node's children have probability, always make the current node a cost node
+13. If the node's children array is empty, make it a leaf type node.
+
+If you ski you will win with a probability of 0.1 and lose with a probability of 0.9.
+The probability of leg being broken is 20% and the probability of leg not broken is 80%. 
+If you win the race and the leg isn't broken, pay off is 100.
+If you win and your leg is broken Pay off is 50.
+If you lose and leg isn't broken pay off is 0.
+If you lose and your leg is broken payoff is -50.
+If you don't ski then if you are leg is broken pay off is -10.
+If leg isn't broken your pay off is 0.
