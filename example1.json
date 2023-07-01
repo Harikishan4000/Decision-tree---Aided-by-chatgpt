@@ -1,102 +1,162 @@
 [
-    {
-      "id": 0,
-      "name": "Root",
-      "type": "root",
-      "level": 0,
-      "probability": null,
-      "payoff": null,
-      "parent": null,
-      "children": [1, 2]
-    },
-    {
-      "id": 1,
-      "name": "Build small facility",
-      "type": "decision",
-      "level": 1,
-      "probability": null,
-      "payoff": null,
-      "parent": 0,
-      "children": [3, 4]
-    },
-    {
-      "id": 2,
-      "name": "Build large facility",
-      "type": "decision",
-      "level": 1,
-      "probability": null,
-      "payoff": null,
-      "parent": 0,
-      "children": [5, 6]
-    },
-    {
-      "id": 3,
-      "name": "Low demand - Payoff: Rs 40000",
-      "type": "cost",
-      "level": 2,
-      "probability": 40,
-      "payoff": 40000,
-      "parent": 1,
-      "children": []
-    },
-    {
-      "id": 4,
-      "name": "High demand",
-      "type": "decision",
-      "level": 2,
-      "probability": null,
-      "payoff": null,
-      "parent": 1,
-      "children": [7, 8, 9]
-    },
-    {
-      "id": 5,
-      "name": "Low demand - Do nothing (Payoff: Rs 10000)",
-      "type": "cost",
-      "level": 2,
-      "probability": 60,
-      "payoff": 10000,
-      "parent": 2,
-      "children": []
-    },
-    {
-      "id": 6,
-      "name": "High demand - Payoff: Rs 70000",
-      "type": "cost",
-      "level": 2,
-      "probability": 40,
-      "payoff": 70000,
-      "parent": 2,
-      "children": []
-    },
-    {
-      "id": 7,
-      "name": "Do nothing (Payoff: Rs 40000)",
-      "type": "cost",
-      "level": 3,
-      "probability": 40,
-      "payoff": 40000,
-      "parent": 4,
-      "children": []
-    },
-    {
-      "id": 8,
-      "name": "Do overtime (Payoff: Rs 55000)",
-      "type": "cost",
-      "level": 3,
-      "probability": 40,
-      "payoff": 55000,
-      "parent": 4,
-      "children": []
-    },
-    {
-      "id": 9,
-      "name": "Expand (Payoff: Rs 55000)",
-      "type": "cost",
-      "level": 3,
-      "probability": 40,
-      "payoff": 55000,
-      "parent": 4,
-      "children": []
-    }
-  ]
+  {
+    "id": 0,
+    "name": "root",
+    "type": "root",
+    "level": 0,
+    "payoff": null,
+    "probability": null,
+    "parent": null,
+    "children": [1, 2]
+  },
+  {
+    "id": 1,
+    "name": "build_small_facility",
+    "type": "decision",
+    "level": 1,
+    "payoff": null,
+    "probability": null,
+    "parent": 0,
+    "children": [3, 4]
+  },
+  {
+    "id": 2,
+    "name": "build_large_facility",
+    "type": "decision",
+    "level": 1,
+    "payoff": null,
+    "probability": null,
+    "parent": 0,
+    "children": [5, 6]
+  },
+  {
+    "id": 3,
+    "name": "demand_high",
+    "type": "decision",
+    "level": 2,
+    "payoff": null,
+    "probability": 0.6,
+    "parent": 1,
+    "children": [7, 8, 9]
+  },
+  {
+    "id": 4,
+    "name": "demand_low",
+    "type": "decision",
+    "level": 2,
+    "payoff": null,
+    "probability": 0.4,
+    "parent": 1,
+    "children": [10]
+  },
+  {
+    "id": 5,
+    "name": "demand_low",
+    "type": "decision",
+    "level": 2,
+    "payoff": null,
+    "probability": 0.4,
+    "parent": 2,
+    "children": [11, 12]
+  },
+  {
+    "id": 6,
+    "name": "demand_high",
+    "type": "decision",
+    "level": 2,
+    "payoff": null,
+    "probability": 0.6,
+    "parent": 2,
+    "children": [13]
+  },
+  {
+    "id": 7,
+    "name": "no_expand",
+    "type": "cost",
+    "level": 3,
+    "payoff": 200000,
+    "probability": null,
+    "parent": 3,
+    "children": []
+  },
+  {
+    "id": 8,
+    "name": "expand",
+    "type": "cost",
+    "level": 3,
+    "payoff": 270000,
+    "probability": null,
+    "parent": 3,
+    "children": []
+  },
+  {
+    "id": 9,
+    "name": "wait_for_a_while",
+    "type": "cost",
+    "level": 3,
+    "payoff": 223000,
+    "probability": null,
+    "parent": 3,
+    "children": []
+  },
+  {
+    "id": 10,
+    "name": "no_expand",
+    "type": "cost",
+    "level": 3,
+    "payoff": 200000,
+    "probability": null,
+    "parent": 4,
+    "children": []
+  },
+  {
+    "id": 11,
+    "name": "do_nothing",
+    "type": "cost",
+    "level": 3,
+    "payoff": 40000,
+    "probability": null,
+    "parent": 5,
+    "children": []
+  },
+  {
+    "id": 12,
+    "name": "advertise",
+    "type": "decision",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 5,
+    "children": [14, 15]
+  },
+  {
+    "id": 13,
+    "name": "do_nothing",
+    "type": "cost",
+    "level": 3,
+    "payoff": 800000,
+    "probability": null,
+    "parent": 6,
+    "children": []
+  },
+  {
+    "id": 14,
+    "name": "modest",
+    "type": "cost",
+    "level": 4,
+    "payoff": 200000,
+    "probability": 0.3,
+    "parent": 12,
+    "children": []
+  },
+  {
+    "id": 15,
+    "name": "sizable",
+    "type": "cost",
+    "level": 4,
+    "payoff": 220000,
+    "probability": 0.7,
+    "parent": 12,
+    "children": []
+  }
+]

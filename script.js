@@ -237,6 +237,8 @@ function adjustLine(from, to, line) {
           child=data[0].children[j];
           if(data[child].payoff==data[0].payoff){ //Check for the child whose payoff is equal to the root's payoff
             data[0].name=data[child].name;
+            document.querySelector('.gridItem'+String(locs[data[child].id])).classList.add("answer");
+            document.querySelector(".result").classList.add("show")
           }
          }
       }
@@ -261,7 +263,7 @@ function adjustLine(from, to, line) {
         // data[0].payoff=1;
 
         if(data[0].payoff){
-          result.innerHTML=data[0].payoff;
+          result.innerHTML=data[0].name+" : "+data[0].payoff;
         }
         else{
           result.innerHTML="Err";
