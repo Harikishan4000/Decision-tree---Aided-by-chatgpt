@@ -1,4 +1,4 @@
-import jsondata from './example1.json' assert { type: 'json' };
+import jsondata from './test.json' assert { type: 'json' };
 var data={...jsondata}
 
 const grid=document.querySelector(".grid-container");
@@ -182,13 +182,28 @@ function adjustLine(from, to, line) {
 
   
 
+
+
+
+
+
+
+
   // ALGORITHM TO FIND THE DECISION
+
+  let rootCost=0;
+  if(data[0].payoff!=null){
+    rootCost=data[0].payoff;
+    data[0].payoff=null;
+  }
+
   function decision_tree(){
     let temp;
   let flag;
   let result;
     let child;
     let i, j, k;
+    
 
     for(i=Object.keys(data).length-1;i>=0;i--){
        temp=-1000; flag=-1;
@@ -271,7 +286,7 @@ function adjustLine(from, to, line) {
         decision_tree();
         document.querySelector(".result").classList.add("show")
         if(data[0].payoff!=null){
-          result.innerHTML=data[0].name+" : "+data[0].payoff;
+          result.innerHTML=data[0].name+" : "+(data[0].payoff+rootCost);
         }
         else{
           result.innerHTML="Err";

@@ -4,7 +4,7 @@
       "name": "root",
       "type": "root",
       "level": 0,
-      "payoff": null,
+      "payoff": 50,
       "probability": null,
       "parent": null,
       "children": [1, 7]
