@@ -1,5 +1,6 @@
 import jsondata from './example1.json' assert { type: 'json' };
 var data={...jsondata}
+
 const grid=document.querySelector(".grid-container");
 let totDivs= 300;
 for(let i=0; i<totDivs;i++){
@@ -30,10 +31,6 @@ root.classList.add("node");
 var dets="ID: "+data[0].id+" NAME:"+data[0].name+" PROB:"+data[0].probability+" PAYOFF:"+data[0].payoff;
 root.setAttribute("details", String(dets))
 root.innerHTML= data[0].id;
-
-// console.log(".gridItem"+String(Math.floor(totDivsInRow/2)))
-console.log(data[0].name)
-console.log(Object.keys(data).length)
 
 
 //This loop is used to check maximum level of the nodes to divide the nodes equally
@@ -148,7 +145,7 @@ function adjustLine(from, to, line) {
     line.style.height = H + 'px';
   }
 
-  console.log(Object.keys(data).length);
+  // console.log(Object.keys(data).length);
   
   let linenum=0;
   for(let i=0; i<Object.keys(data).length;i++){
@@ -181,21 +178,25 @@ function adjustLine(from, to, line) {
     })
   }
   
+  const toggle=document.querySelector(".toggle");
 
-
+  
 
   // ALGORITHM TO FIND THE DECISION
   function decision_tree(){
+    let temp;
+  let flag;
+  let result;
     let child;
     let i, j, k;
 
     for(i=Object.keys(data).length-1;i>=0;i--){
-      let temp=-1000, flag=-1;
-      let result=0;
+       temp=-1000; flag=-1;
+       result=0;
 
         for(j=0;j<data[i].children.length;j++){
           child=data[i].children[j];
-          if(data[child].probability){
+          if(data[child].probability){  //If the children have probability, ie this is a cost node?
             result+=data[child].probability*data[child].payoff;
             
             flag=0;
@@ -216,10 +217,15 @@ function adjustLine(from, to, line) {
           data[i].payoff=result;
          }
          if(flag==1){
-          for(j=0;j<data[i].children.length;j++){
+          temp=data[data[i].children[0]].payoff;
+          // console.log(data[i].children[0])
+          for(j=1;j<data[i].children.length;j++){ //If the children dont have probability, ie this is a decision node
             child=data[i].children[j];
-            console.log(child)
-            if(data[child].payoff>temp){
+            // console.log(child)
+            if(data[child].payoff<temp&&toggle.classList.contains("mini")){
+              temp=data[child].payoff;
+              // console.log(temp)
+            }else if(data[child].payoff>temp&&!toggle.classList.contains("mini")){
               temp=data[child].payoff;
             }
            }
@@ -231,38 +237,40 @@ function adjustLine(from, to, line) {
           break;
          }
       }
-
-      if(data[0].payoff){ //Check if the root node's payoff is updated
+      // console.log(data[0].payoff)
+      if(data[0].payoff!=null){ //Check if the root node's payoff is updated
         for(j=0;j<data[0].children.length;j++){
           child=data[0].children[j];
           if(data[child].payoff==data[0].payoff){ //Check for the child whose payoff is equal to the root's payoff
             data[0].name=data[child].name;
             document.querySelector('.gridItem'+String(locs[data[child].id])).classList.add("answer");
-            document.querySelector(".result").classList.add("show")
           }
          }
       }
       else{
-        
         console.log("Kuch gadbad hua he");
-        for(j=0;j<Object.keys(data).length;j++){
-          
+        for(j=0;j<Object.keys(data[0].children).length;j++){
+          console.log("child: "+ data[0].children[j].id+"  Payoff: "+ data[0].children[j].payoff)
         }
       }
+
+
+      //Return data to its initial values
+      data={...jsondata}
+    //  console.log(data[0].payoff)
+     
     }
   
-
-
     const evaluate=document.querySelector(".evaluate");
     const result=document.querySelector(".result");
     
 
     evaluate.addEventListener("click", ()=>{
       try{
+        // console.log(data)
         decision_tree();
-        // data[0].payoff=1;
-
-        if(data[0].payoff){
+        document.querySelector(".result").classList.add("show")
+        if(data[0].payoff!=null){
           result.innerHTML=data[0].name+" : "+data[0].payoff;
         }
         else{
@@ -272,3 +280,21 @@ function adjustLine(from, to, line) {
         console.log("Caught error by code: "+ err);
       }
     })
+
+
+
+    // Maximise and  minimize toggle
+
+    toggle.addEventListener("click", ()=>{
+      result.innerHTML=""
+      result.classList.remove("show");
+      if(document.querySelector(".answer"))
+        document.querySelector(".answer").classList.remove("answer");
+      toggle.classList.toggle("mini");
+      if(toggle.classList.contains("mini")){
+        toggle.innerHTML="Min";
+      }else{
+        toggle.innerHTML="Max";
+      }
+    })  
+
