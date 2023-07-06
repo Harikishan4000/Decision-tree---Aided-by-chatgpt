@@ -144,7 +144,7 @@
     "name": "modest",
     "type": "cost",
     "level": 4,
-    "payoff": 200000,
+    "payoff": 20000,
     "probability": 0.3,
     "parent": 12,
     "children": []

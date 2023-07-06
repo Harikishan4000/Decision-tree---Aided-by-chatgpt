@@ -1,4 +1,4 @@
-import jsondata from './test.json' assert { type: 'json' };
+import jsondata from './example1.json' assert { type: 'json' };
 var data={...jsondata}
 
 const grid=document.querySelector(".grid-container");
