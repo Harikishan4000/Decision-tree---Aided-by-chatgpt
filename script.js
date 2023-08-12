@@ -183,6 +183,7 @@ function adjustLine(from, to, line) {
   
 //Refresh page on resize
 
+
 window.addEventListener("resize", ()=>{
   console.log("resized");
   document.location.reload();
