@@ -24,7 +24,7 @@ If large facility is built and demand is low, two options:
 2.1. Modest with probability of 0.3 and payoff of 200000.
 2.2. Sizable with a probaility of 0.7 and payoff of 220000.
 If large facility is built and demand is high, one option:
-1. Do nothing payoff is 800000
+1. Do nothing payoff is 800000.
 
 
 

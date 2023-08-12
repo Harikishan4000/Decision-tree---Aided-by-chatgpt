@@ -1,4 +1,4 @@
-import jsondata from './example1.json' assert { type: 'json' };
+import jsondata from './test.json' assert { type: 'json' };
 var data={...jsondata}
 
 const grid=document.querySelector(".grid-container");
@@ -179,9 +179,14 @@ function adjustLine(from, to, line) {
   }
   
   const toggle=document.querySelector(".toggle");
-
   
+  
+//Refresh page on resize
 
+window.addEventListener("resize", ()=>{
+  console.log("resized");
+  document.location.reload();
+})
 
 
 
