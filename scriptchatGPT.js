@@ -6,7 +6,7 @@ const configuration = new Configuration({
   const openai = new OpenAIApi(configuration);
 
   async function runCompletion () {
-    let question=""
+    let question="Should choose between building small or large facility.\nDemand can be low with a probability of 0.4. Demand can be high with a probability of 0.6.\n If small facility is built and demand is high, three options:\n 1. If no expand payoff is 200000.\n 2. If expand payoff 270000.\n 3. If wait for a while payoff is 223000.\n If small facility is built and demand is low, one option:\n 1. no expand with a payoff of 200000.\n If large facility is built and demand is low, two options:\n 1. If do nothing payoff is 40000.\n 2. If advertise we have two options:\n 2.1. Modest with probability of 0.3 and payoff of 200000.\n 2.2. Sizable with a probaility of 0.7 and payoff of 220000.\n If large facility is built and demand is high, one option:\n 1. Do nothing payoff is 800000."
 
 
     const completion = await openai.createCompletion({
