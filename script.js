@@ -1,8 +1,12 @@
 import jsondata from './test.json' assert { type: 'json' };
+
+//? Copy properties of json file and store it in an object 'data'
 var data={...jsondata}
 
 const grid=document.querySelector(".grid-container");
 let totDivs= 300;
+
+//? Add 300 gridItem with empty value string and naming all gridItems with succeeding number.
 for(let i=0; i<totDivs;i++){
     var new_div=document.createElement("div");
     new_div.classList.add("gridItem");
@@ -20,20 +24,22 @@ let numOfNodesAtLevel=[];
 let col=[];
 let colDist=[];
 let locs=[]; //locations of all nodes
-let totDivsInRow=25; //Number of columns
+let totDivsInRow=25; //Number of columns = 25, No of Rows = 12
 let maxLevel=0;
 
-
+//? Select the middle most column node as root item
 const root=document.querySelector(".gridItem"+String(Math.floor(totDivsInRow/2)));
 root.classList.add("root");
 // root.classList.add("decision");
 root.classList.add("node");
+
+//? Details to display
 var dets="ID: "+data[0].id+" NAME:"+data[0].name+" PROB:"+data[0].probability+" PAYOFF:"+data[0].payoff;
 root.setAttribute("details", String(dets))
 root.innerHTML= data[0].id;
 
 
-//This loop is used to check maximum level of the nodes to divide the nodes equally
+//? loop is used to check maximum level of the nodes to divide the nodes equally vertically
 for(let i=0;i<Object.keys(data).length;i++){
     if(data[i].level>maxLevel){
         maxLevel=data[i].level;
@@ -41,24 +47,25 @@ for(let i=0;i<Object.keys(data).length;i++){
     locs[i]=0;
 }
 
-//initialize array values to 0
+//? initialize array values to 0
 for(let i=0;i<=maxLevel;i++){
     numOfNodesAtLevel[i]=0;
     col[i]=0;
     colDist[i]=0;
 }
-// count number of nodes in each level
+//? count number of nodes in each level row-wise
 for(let i=0;i<Object.keys(data).length;i++){
     numOfNodesAtLevel[data[i].level]++;
 
 }
+//? Column number of nodes
 for(let i=0;i<=maxLevel;i++){
     col[i]=Math.floor(totDivsInRow/(numOfNodesAtLevel[i]+1));
     // console.log(col[i])
 }
 
 
-//row dist between levels
+//? row dist between levels
 let rowInc=Math.ceil(12/maxLevel-1);
 locs[data[0].id]=Math.floor(totDivsInRow/2);
 
@@ -68,7 +75,7 @@ for(let i=0;i<Object.keys(data).length;i++){
     colDist[data[i].level]+=col[data[i].level];
     
 
-
+    //? Mark decision node(Square nodes)
     if(data[i].type=="decision"){
         let temp=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp.classList.add("decision");
@@ -81,7 +88,8 @@ for(let i=0;i<Object.keys(data).length;i++){
         locs[data[i].id]=row-colDist[data[i].level];
 
         
-    }
+    } 
+    //? Mark cost node(circlular nodes)
     else if(data[i].type=="cost"){
         let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
         temp2.classList.add("cost");
@@ -90,8 +98,10 @@ for(let i=0;i<Object.keys(data).length;i++){
         var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
         temp2.setAttribute("details", String(dets))
         temp2.innerHTML= data[i].id;
+
         locs[data[i].id]=row-colDist[data[i].level];    
-    }
+    } 
+    //? Mark leaf node(circlular nodes) impotent
     else if(data[i].type=="leaf"){
       let temp2=document.querySelector(".gridItem"+String(Math.floor(row-colDist[data[i].level])));
       temp2.classList.add("leaf");
@@ -100,12 +110,13 @@ for(let i=0;i<Object.keys(data).length;i++){
       var dets="ID: "+data[i].id+" NAME: "+data[i].name+" PROB: "+data[i].probability+" PAYOFF: "+data[i].payoff+" CHILD OF: "+data[i].parent;
       temp2.setAttribute("details", String(dets))
       temp2.innerHTML= "<p>"+data[i].id+"</p>";
+
       locs[data[i].id]=row-colDist[data[i].level];    
   }
 }
 
 
-//function to draw a line from center of two divs
+//?function to draw a line from center of two divs
 
 function adjustLine(from, to, line) {
 
@@ -147,6 +158,7 @@ function adjustLine(from, to, line) {
 
   // console.log(Object.keys(data).length);
   
+  //? Check if any nodes have children, if they do, add line
   let linenum=0;
   for(let i=0; i<Object.keys(data).length;i++){
       for(let j=0; j<data[i].children.length;j++){
@@ -164,7 +176,7 @@ function adjustLine(from, to, line) {
     }
   }
 
-  //On hovering node, gives node details
+  //?On hovering node, gives node details
   let node=document.querySelectorAll(".node");
 
   for(let i=0;i<node.length;i++){
@@ -181,7 +193,7 @@ function adjustLine(from, to, line) {
   const toggle=document.querySelector(".toggle");
   
   
-//Refresh page on resize
+//?Refresh page on resize
 
 
 window.addEventListener("resize", ()=>{
@@ -191,11 +203,7 @@ window.addEventListener("resize", ()=>{
 
 
 
-
-
-
-
-  // ALGORITHM TO FIND THE DECISION
+  //? ALGORITHM TO FIND THE DECISION
 
   let rootCost=0;
   if(data[0].payoff!=null){
@@ -205,8 +213,8 @@ window.addEventListener("resize", ()=>{
 
   function decision_tree(){
     let temp;
-  let flag;
-  let result;
+    let flag;
+    let result;
     let child;
     let i, j, k;
     
@@ -217,7 +225,7 @@ window.addEventListener("resize", ()=>{
 
         for(j=0;j<data[i].children.length;j++){
           child=data[i].children[j];
-          if(data[child].probability){  //If the children have probability, ie this is a cost node?
+          if(data[child].probability){  //If the children have probability, is this is a cost node?
             result+=data[child].probability*data[child].payoff;
             
             flag=0;
