@@ -58,4 +58,4 @@ app.post("/upload", middle, async (req, res) => {
 
 // app.listen(port, () => console.log(`Server listening on port ${port}`));
 
-app.listen(5000)
+app.listen(5000);
