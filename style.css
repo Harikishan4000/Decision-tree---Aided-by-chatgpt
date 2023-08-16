@@ -206,7 +206,7 @@ body{
   position: absolute;
   
   border-radius: 10px;
-  top: 100%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -200%);
   color: #fff;
@@ -286,4 +286,24 @@ body{
 
     .toggle:hover{
         transform: rotate(360deg);
+    }
+
+    .title {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        padding: 10% 25%;
+        font-weight: 600;
+        color: whitesmoke;
+    }
+
+    .question {
+        position: absolute;
+        padding: 0% 25%;
+        color: #000000;
+        top: 40%;
+        left: 25%;
+        width: 10%;
+        height: 15%;
+        font-size: medium;
     }

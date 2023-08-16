@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 {
   "0": {
     "id": 0,
@@ -136,3 +137,6 @@
     "type": "leaf",
     "level": 3,
     "payoff
+=======
+Bot: It sounds like your best option is to not ski and minimize your risk of paying off anything.
+>>>>>>> 6febefc (Indexform Styling)
