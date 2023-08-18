@@ -108,25 +108,34 @@ app.post("/upload", middle, async (req, res) => {
 
 app.post("/uploadShares", middle, async(req, res)=>{
 
-  const prompt = req.body.share1;
+  const prompt1 = req.body.share1;
+  const prompt2 = req.body.share2;
+  const prompt3 = req.body.share3;
 
-  console.log(prompt);
-  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo';
+  let companies=[prompt1, prompt2, prompt3];
 
-  // request.get({
-  //     url: url,
-  //     json: true,
-  //     headers: {'User-Agent': 'request'}
-  //   }, (err, res, data) => {
-  //     if (err) {
-  //       console.log('Error:', err);
-  //     } else if (res.statusCode !== 200) {
-  //       console.log('Status:', res.statusCode);
-  //     } else {
-  //       // data is successfully parsed as a JSON object:
-  //       console.log(data);
-  //     }
-  // });
+  console.log(companies.toString());
+  var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+
+  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
+
+  request.get({
+      url: url,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+      } else {
+        const myData=JSON.stringify(data);
+        // data is successfully parsed as a JSON object:
+        fs.writeFile('shareData.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+
+        // console.log(data);
+      }
+  });
 })
 
 
