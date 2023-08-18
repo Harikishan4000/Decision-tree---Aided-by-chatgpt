@@ -7,3 +7,9 @@ for(let i=0; i<totDivs;i++){
     new_div.classList.add("grid-item");
     gridDesign.appendChild(new_div);
 }
+
+const sub=document.querySelector(".formSubmit");
+
+sub.addEventListener("click", ()=>{
+    // window.location.href='/tree';
+})

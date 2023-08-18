@@ -1,6 +1,6 @@
 
 
-{
+[{
   "id": 0,
   "name": "root",
   "type": "root",
@@ -159,4 +159,4 @@
   "probability": 0.7,
   "parent": 13,
   "children": []
-}
+}]

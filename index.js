@@ -1,4 +1,6 @@
 const http=require("http");
+const url=require("url");
+
 const express = require("express");
 const fs= require("fs");
 const cors=require("cors");
@@ -6,6 +8,11 @@ require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
+
+app.use(express.static(__dirname + '/public'));
+
+
+
 
 app.use(cors());
 const middle = express.urlencoded({
@@ -15,19 +22,13 @@ const middle = express.urlencoded({
 
 });
 
-function onRequest(request, response){
-  response.writeHead(200, {"Content-type": "text/html"});
+app.get('', (req, res)=>{
+  res.sendFile(__dirname+'/views/indexform.html')
+})
 
-  fs.readFile("./index.html", null, function(error, data){
-    if(error){
-      response.writeHead(404);
-      response.write("File not found");
-    }else{
-      response.write(data);
-    }
-    response.end();
-  })
-}
+app.get('/tree', (req, res)=>{
+  res.sendFile(__dirname+'/views/index.html')
+})
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -64,7 +65,12 @@ app.post("/upload", middle, async (req, res) => {
       console.log(error);
     }
     
-    http.createServer(onRequest).listen(8000);
+    // try {
+    //   res.end('tree');
+    // } catch (error) {
+    //   console.log("aagilla");
+    // }
+    // window.location.href = __dirname+"/tree";
 
     return res.status(200).json({
       success: true,
@@ -85,7 +91,5 @@ app.post("/upload", middle, async (req, res) => {
 // const port = process.env.PORT || 5000;
 
 // app.listen(port, () => console.log(`Server listening on port ${port}`));
-
-
 
 app.listen(5000);

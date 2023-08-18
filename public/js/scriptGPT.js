@@ -1,5 +1,5 @@
 import { OpenAI } from "./openai.js";
-import dotenv from './node_modules/dotenv/config.js';
+import dotenv from 'dotenv/config.js';
 dotenv.config();
 // Creating a new instance of the OpenAI class and passing in the OPENAI_KEY environment variable
 const openAI = new OpenAI(process.env.OPENAI_API_KEY);

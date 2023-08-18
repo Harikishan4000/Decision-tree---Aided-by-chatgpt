@@ -1,4 +1,4 @@
-import jsondata from './json/test.json' assert { type: 'json' };
+import jsondata from './test.json' assert { type: 'json' };
 
 //? Copy properties of json file and store it in an object 'data'
 var data={...jsondata}
