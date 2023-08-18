@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="gridContainer "></div>
+    <div class="mega-container sharesContainer">
+
+        <div class="menu">
+            <button class="but sharebut active">Share</button>
+            <button class="but decisionbut">Decision</button>
+            <button class="but mapsbut">Maps</button>
+        </div>
+
+        <div class="title">
+            <h1>Select your shares</h1>
+        </div>
+        <!-- <div class="decision"></div> -->
+        <form action="#">
+
+            <label class="">Share 1:<input list="shares" type="text" class="share1 listDisplay" name="share1"></label>
+            
+            <label class="">Share 2:<input list="shares" type="text" class="share2 listDisplay" name="share2"></label>
+
+            <label class="">Share 3:<input list="shares" type="text" class="share3 listDisplay" name="share3"></label>
+
+            <datalist id="shares">
+                    <option value="Alcaholics">
+                    <option value="smoking">
+            </datalist>
+
+            <input class="formSubmit" type="submit" value="Create Tree">
+
+        </form>
+        
+        <!-- <i class="fa-solid fa-bars"></i> -->
+        <div class="result"></div>
+    </div>    
+
+    <script type="module" src="../js/scriptShareForm.js"></script>
+    <script src="../js/formDataShares.js"></script>
+</body>
+</html>

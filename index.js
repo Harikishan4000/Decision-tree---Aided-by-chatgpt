@@ -1,5 +1,8 @@
 const http=require("http");
 const url=require("url");
+const request=require("request");
+const  bodyParser=require("body-parser");
+
 
 const express = require("express");
 const fs= require("fs");
@@ -9,10 +12,11 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
 
-
-
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(cors());
 const middle = express.urlencoded({
@@ -22,12 +26,21 @@ const middle = express.urlencoded({
 
 });
 
-app.get('', (req, res)=>{
+
+
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res)=>{
   res.sendFile(__dirname+'/views/indexform.html')
 })
 
 app.get('/tree', (req, res)=>{
   res.sendFile(__dirname+'/views/index.html')
+})
+
+app.get('/sharetree', (req, res)=>{
+  res.sendFile(__dirname+'/views/indexshares.html')
 })
 
 const configuration = new Configuration({
@@ -91,5 +104,30 @@ app.post("/upload", middle, async (req, res) => {
 // const port = process.env.PORT || 5000;
 
 // app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+
+app.post("/uploadShares", middle, async(req, res)=>{
+
+  const prompt = req.body.share1;
+
+  console.log(prompt);
+  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo';
+
+  // request.get({
+  //     url: url,
+  //     json: true,
+  //     headers: {'User-Agent': 'request'}
+  //   }, (err, res, data) => {
+  //     if (err) {
+  //       console.log('Error:', err);
+  //     } else if (res.statusCode !== 200) {
+  //       console.log('Status:', res.statusCode);
+  //     } else {
+  //       // data is successfully parsed as a JSON object:
+  //       console.log(data);
+  //     }
+  // });
+})
+
 
 app.listen(5000);

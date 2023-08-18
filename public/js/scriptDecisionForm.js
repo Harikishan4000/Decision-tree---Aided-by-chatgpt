@@ -11,5 +11,16 @@ for(let i=0; i<totDivs;i++){
 const sub=document.querySelector(".formSubmit");
 
 sub.addEventListener("click", ()=>{
-    // window.location.href='/tree';
+    window.location.href='/tree';
+})
+
+const sharebut=document.querySelector(".sharebut");
+sharebut.addEventListener("click", ()=>{
+    window.location.href='/sharetree';
+})
+
+const decisionbut=document.querySelector(".decisionbut");
+decisionbut.addEventListener("click", ()=>{
+    window.location.href='/';
+    
 })
