@@ -288,22 +288,61 @@ body{
         transform: rotate(360deg);
     }
 
-    .title {
+    .mega-container{
         position: absolute;
-        width: 100%;
-        text-align: center;
-        padding: 10% 25%;
-        font-weight: 600;
-        color: whitesmoke;
+        background-color: #313131;
+        top: 50%;
+        left:50%;
+        width: fit-content;
+        height: fit-content;
+        transform: translate(-50%, 70%);
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        color: #ffffff;
+        padding: 3%;
+        border-radius: 10px;
+        box-shadow: #39096c 15px 15px 2.6px;
+        border: 5px solid #39096c;
     }
 
-    .question {
-        position: absolute;
-        padding: 0% 25%;
-        color: #000000;
-        top: 40%;
-        left: 25%;
-        width: 10%;
-        height: 15%;
+    .title{
+        margin-bottom: 50px;
+    }
+
+    .formSubmit{
+        background-color: #39096c;
+        padding: 10px;
+        border-radius: 2px;
+        cursor: pointer;
+        width: 20%;
+        font-size: large;
+        font-weight: bolder;
+        color: #ffffff;
+        margin-top: 10px;
+    }
+
+    .question{
+        height: 100px;
+        width: 600px;
         font-size: medium;
+    }
+
+    .gridContainer{
+        position: absolute;
+        margin: 10px;
+        width: 98%;
+        min-height: 98vh;
+        display: grid;
+        grid-template-columns: repeat(25, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        grid-row-gap: 5px;
+        grid-column-gap: 5px;
+        z-index: 0;
+    }
+
+    .grid-item{
+        border: 0.3px solid #ffffff40;
+        z-index: inherit;
     }

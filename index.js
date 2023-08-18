@@ -1,3 +1,4 @@
+const http=require("http");
 const express = require("express");
 const fs= require("fs");
 const cors=require("cors");
@@ -14,6 +15,20 @@ const middle = express.urlencoded({
 
 });
 
+function onRequest(request, response){
+  response.writeHead(200, {"Content-type": "text/html"});
+
+  fs.readFile("./index.html", null, function(error, data){
+    if(error){
+      response.writeHead(404);
+      response.write("File not found");
+    }else{
+      response.write(data);
+    }
+    response.end();
+  })
+}
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -29,20 +44,33 @@ app.post("/upload", middle, async (req, res) => {
               ###
               ${prompt}
             `,
-      max_tokens: 1000,
+      max_tokens: 2000,
       temperature: 0.0,
     });
-    console.log(prompt);
-    fs.writeFile('output.txt','', function cleared(){ console.log("File is cleared.")});
-    fs.writeFile('output.txt', response.data.choices[0].text, function finished(err){console.log("Finished")});
+
+    // const regex=new RegExp("\[(.*?)\]");
+    // var data= regex.exec(response.data.choices[0].text).input;
+
+    // var text = response.data.choices[0].text;
+    // const regex = /\[([^\]]+)\]/g;
+    // const matches = text.match(regex).map(match => match.slice(1, -1));
+
+    try {
+      fs.writeFile('output.json','', function cleared(){ console.log("File is cleared.")});
+      console.log("data is: ",response.data.choices[0].text);
+
+      fs.writeFile('output.json', response.data.choices[0].text, function finished(err){console.log("Finished")});
+    } catch (error) {
+      console.log(error);
+    }
+    
+    http.createServer(onRequest).listen(8000);
+
     return res.status(200).json({
       success: true,
       data: response.data.choices[0].text,
     });
 
-    
-
-    
 
   } catch (error) {
     return res.status(400).json({
@@ -57,5 +85,7 @@ app.post("/upload", middle, async (req, res) => {
 // const port = process.env.PORT || 5000;
 
 // app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+
 
 app.listen(5000);

@@ -1,7 +1,7 @@
 
-<<<<<<< HEAD
-{
-  "0": {
+
+[
+  {
     "id": 0,
     "name": "root",
     "type": "root",
@@ -11,9 +11,9 @@
     "parent": null,
     "children": [1, 2]
   },
-  "1": {
+  {
     "id": 1,
-    "name": "small facility",
+    "name": "ski",
     "type": "decision",
     "level": 1,
     "payoff": null,
@@ -21,9 +21,9 @@
     "parent": 0,
     "children": [3, 4]
   },
-  "2": {
+  {
     "id": 2,
-    "name": "large facility",
+    "name": "no ski",
     "type": "decision",
     "level": 1,
     "payoff": null,
@@ -31,112 +31,104 @@
     "parent": 0,
     "children": [5, 6]
   },
-  "3": {
+  {
     "id": 3,
-    "name": "demand low",
+    "name": "win",
     "type": "cost",
     "level": 2,
     "payoff": null,
-    "probability": 0.4,
+    "probability": 0.1,
     "parent": 1,
-    "children": [7]
+    "children": [7, 8]
   },
-  "4": {
+  {
     "id": 4,
-    "name": "demand high",
+    "name": "lose",
     "type": "cost",
     "level": 2,
     "payoff": null,
-    "probability": 0.6,
+    "probability": 0.9,
     "parent": 1,
-    "children": [8, 9, 10]
+    "children": [9, 10]
   },
-  "5": {
+  {
     "id": 5,
-    "name": "demand low",
+    "name": "leg broken",
     "type": "cost",
     "level": 2,
     "payoff": null,
-    "probability": 0.4,
+    "probability": 0.2,
     "parent": 2,
-    "children": [11, 12]
+    "children": [11]
   },
-  "6": {
+  {
     "id": 6,
-    "name": "demand high",
+    "name": "leg not broken",
     "type": "cost",
     "level": 2,
     "payoff": null,
-    "probability": 0.6,
+    "probability": 0.8,
     "parent": 2,
-    "children": [13]
+    "children": [12]
   },
-  "7": {
+  {
     "id": 7,
-    "name": "no expand",
+    "name": "win and leg not broken",
     "type": "leaf",
     "level": 3,
-    "payoff": 200000,
+    "payoff": 100,
     "probability": null,
     "parent": 3,
     "children": []
   },
-  "8": {
+  {
     "id": 8,
-    "name": "expand",
+    "name": "win and leg broken",
     "type": "leaf",
     "level": 3,
-    "payoff": 270000,
+    "payoff": 50,
     "probability": null,
-    "parent": 4,
+    "parent": 3,
     "children": []
   },
-  "9": {
+  {
     "id": 9,
-    "name": "wait for a while",
+    "name": "lose and leg not broken",
     "type": "leaf",
     "level": 3,
-    "payoff": 223000,
+    "payoff": 0,
     "probability": null,
     "parent": 4,
     "children": []
   },
-  "10": {
+  {
     "id": 10,
-    "name": "no expand",
+    "name": "lose and leg broken",
     "type": "leaf",
     "level": 3,
-    "payoff": 200000,
+    "payoff": -50,
     "probability": null,
     "parent": 4,
     "children": []
   },
-  "11": {
+  {
     "id": 11,
-    "name": "do nothing",
+    "name": "no ski and leg broken",
     "type": "leaf",
     "level": 3,
-    "payoff": 40000,
+    "payoff": -10,
     "probability": null,
     "parent": 5,
     "children": []
   },
-  "12": {
+  {
     "id": 12,
-    "name": "advertise",
-    "type": "cost",
-    "level": 3,
-    "payoff": null,
-    "probability": null,
-    "parent": 5,
-    "children": [14, 15]
-  },
-  "13": {
-    "id": 13,
-    "name": "do nothing",
+    "name": "no ski and leg not broken",
     "type": "leaf",
     "level": 3,
-    "payoff
-=======
-Bot: It sounds like your best option is to not ski and minimize your risk of paying off anything.
->>>>>>> 6febefc (Indexform Styling)
+    "payoff": 0,
+    "probability": null,
+    "parent": 6,
+    "children": []
+  }
+]
