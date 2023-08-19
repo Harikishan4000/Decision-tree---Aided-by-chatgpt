@@ -43,6 +43,12 @@ app.get('/sharetree', (req, res)=>{
   res.sendFile(__dirname+'/views/indexshares.html')
 })
 
+//to get output.json into public folder
+app.get('/get-json', (req, res) => {
+  
+  res.sendFile(__dirname+ '/output.json');
+});
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -50,7 +56,7 @@ const openai = new OpenAIApi(configuration);
 
 app.post("/upload", middle, async (req, res) => {
   try {
-    fs.writeFile('output.json','', function cleared(){ console.log("File is cleared.")});
+    // fs.writeFile('./output.json','', function cleared(){ console.log("File is cleared.")});
 
     const prompt = req.body.query;
     const response = await openai.createCompletion({

@@ -1,7 +1,17 @@
-import jsondata from './test.json' assert { type: 'json' };
+// import jsondata from '../../output.json' assert { type: 'json' };
+
+
+fetch('/get-json')
+  .then(response => response.json())
+  .then(jsondata => {
+    // Process the JSON data received from the server
+    console.log(jsondata);
+
+    var data={...jsondata};
+  
 
 //? Copy properties of json file and store it in an object 'data'
-var data={...jsondata}
+
 
 const grid=document.querySelector(".grid-container");
 let totDivs= 300;
@@ -328,3 +338,7 @@ window.addEventListener("resize", ()=>{
       }
     })  
 
+  })
+  .catch(error => {
+    console.error('Error fetching JSON:', error);
+  });
