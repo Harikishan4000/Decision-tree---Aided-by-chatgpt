@@ -67,7 +67,7 @@ app.post("/upload", middle, async (req, res) => {
               ${prompt}`
             ,
       max_tokens: 2000,
-      temperature: 0.0,
+      temperature: 0.5,
     });
 
 
@@ -112,15 +112,12 @@ app.post("/uploadShares", middle, async(req, res)=>{
   const prompt2 = req.body.share2;
   const prompt3 = req.body.share3;
 
-  let companies=[prompt1, prompt2, prompt3];
-
-  console.log(companies.toString());
-  var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+  var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
 
   // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
 
   request.get({
-      url: url,
+      url: url1,
       json: true,
       headers: {'User-Agent': 'request'}
     }, (err, res, data) => {
@@ -131,7 +128,49 @@ app.post("/uploadShares", middle, async(req, res)=>{
       } else {
         const myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
-        fs.writeFile('shareData.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+        fs.writeFile('share1Data.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+      }
+  });
+
+
+  var url2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+
+  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
+
+  request.get({
+      url: url2,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+      } else {
+        const myData=JSON.stringify(data);
+        // data is successfully parsed as a JSON object:
+        fs.writeFile('share2Data.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+      }
+  });
+
+
+  var url3 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt3+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+
+  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
+
+  request.get({
+      url: url3,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+      } else {
+        const myData=JSON.stringify(data);
+        // data is successfully parsed as a JSON object:
+        fs.writeFile('share3Data.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
       }
   });
 })
