@@ -43,6 +43,10 @@ app.get('/sharetree', (req, res)=>{
   res.sendFile(__dirname+'/views/indexshares.html')
 })
 
+app.get('/maps', (req, res)=>{
+  res.sendFile(__dirname+'/views/indexmaps.html')
+})
+
 //to get output.json into public folder
 app.get('/get-json', (req, res) => {
   

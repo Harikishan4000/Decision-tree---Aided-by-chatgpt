@@ -28,6 +28,12 @@ decisionbut.addEventListener("click", ()=>{
     
 })
 
+const mapsbut=document.querySelector(".mapsbut");
+mapsbut.addEventListener("click", ()=>{
+    window.location.href='/maps';
+    
+})
+
 const shareOptions=document.querySelector("#shares");  
 let share1=document.querySelector('.share1');
 let share2=document.querySelector('.share2');
