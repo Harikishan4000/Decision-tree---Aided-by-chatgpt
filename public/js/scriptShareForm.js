@@ -1,3 +1,6 @@
+import jsondata from './listing_status.json' assert { type: 'json' };
+
+
 const gridDesign=document.querySelector(".gridContainer");
 let totDivs= 300;
 
@@ -24,3 +27,15 @@ decisionbut.addEventListener("click", ()=>{
     window.location.href='/';
     
 })
+
+const shareOptions=document.querySelector("#shares");
+
+console.log(shareOptions);
+
+for(let i=0; i<Object.keys(jsondata).length;i++){
+    let opt=document.createElement("option");
+    let val=jsondata[i].name+" : "+jsondata[i].symbol
+    opt.setAttribute("value", val);
+    shareOptions.appendChild(opt);
+}
+

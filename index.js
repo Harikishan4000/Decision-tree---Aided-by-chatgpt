@@ -115,7 +115,7 @@ app.post("/uploadShares", middle, async(req, res)=>{
   let companies=[prompt1, prompt2, prompt3];
 
   console.log(companies.toString());
-  var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+  var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
 
   // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
 

@@ -24,15 +24,14 @@
         <!-- <div class="decision"></div> -->
         <form action="#">
 
-            <label class="">Share 1:<input list="shares" type="text" class="share1 listDisplay" name="share1"></label>
+            <label class="">Share 1:<input list="shares" type="text" class="share1 listDisplay" name="share1" placeholder="Search for company or symbol"></label>
             
-            <label class="">Share 2:<input list="shares" type="text" class="share2 listDisplay" name="share2"></label>
+            <label class="">Share 2:<input list="shares" type="text" class="share2 listDisplay" name="share2" placeholder="Search for company or symbol"></label>
 
-            <label class="">Share 3:<input list="shares" type="text" class="share3 listDisplay" name="share3"></label>
+            <label class="">Share 3:<input list="shares" type="text" class="share3 listDisplay" name="share3" placeholder="Search for company or symbol"></label>
 
             <datalist id="shares">
-                    <option value="Alcaholics">
-                    <option value="smoking">
+
             </datalist>
 
             <input class="formSubmit" type="submit" value="Create Tree">
@@ -43,7 +42,7 @@
         <div class="result"></div>
     </div>    
 
-    <script type="module" src="../js/scriptShareForm.js"></script>
+    <script type="module" src="../js/scriptShareForm.js" defer></script>
     <script src="../js/formDataShares.js"></script>
 </body>
 </html>
