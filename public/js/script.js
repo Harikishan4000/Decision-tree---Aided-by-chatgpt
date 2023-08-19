@@ -1,5 +1,6 @@
 // import jsondata from '../../output.json' assert { type: 'json' };
 
+const load=document.querySelector(".loading-container");
 
 fetch('/get-json')
   .then(response => response.json())
@@ -25,7 +26,7 @@ for(let i=0; i<totDivs;i++){
     grid.appendChild(new_div);
 }
 
-
+load.style.display="none";
 
 
 // JSON SCRIPT READ
@@ -340,5 +341,9 @@ window.addEventListener("resize", ()=>{
 
   })
   .catch(error => {
-    console.error('Error fetching JSON:', error);
+    load.style.display="block";
+    setTimeout(function () { 
+      location.reload();
+    }, 60 * 100);
+    console.error('Error fetching JSONNNNN:', error);
   });
