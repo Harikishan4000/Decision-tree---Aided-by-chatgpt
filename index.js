@@ -56,7 +56,7 @@ const openai = new OpenAIApi(configuration);
 
 app.post("/upload", middle, async (req, res) => {
   try {
-    // fs.writeFile('./output.json','', function cleared(){ console.log("File is cleared.")});
+    fs.writeFile('./output.json','', function cleared(){ console.log("File is cleared.")});
 
     const prompt = req.body.query;
     const response = await openai.createCompletion({
@@ -73,7 +73,7 @@ app.post("/upload", middle, async (req, res) => {
 
     try {
 
-      // fs.writeFile('output.json', response.data.choices[0].text, function finished(err){console.log("Finished")});
+      fs.writeFile('output.json', response.data.choices[0].text, function finished(err){console.log("Finished")});
     } catch (error) {
       console.log(error);
     }
