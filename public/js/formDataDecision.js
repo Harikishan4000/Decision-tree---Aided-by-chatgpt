@@ -6,7 +6,7 @@ form.addEventListener('submit', (e)=>{
     const fd=new FormData(form);
 
     const URLdata= new URLSearchParams(fd).toString();
-    // console.log(URLdata);
+    
     fetch('http://localhost:5000/upload', {
         method: "POST",
         body: URLdata,

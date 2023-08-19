@@ -28,14 +28,33 @@ decisionbut.addEventListener("click", ()=>{
     
 })
 
-const shareOptions=document.querySelector("#shares");
+const shareOptions=document.querySelector("#shares");  
+let share1=document.querySelector('.share1');
+let share2=document.querySelector('.share2');
+let share3=document.querySelector('.share3');
 
-console.log(shareOptions);
+
 
 for(let i=0; i<Object.keys(jsondata).length;i++){
     let opt=document.createElement("option");
-    let val=jsondata[i].name+" : "+jsondata[i].symbol
+    let val=jsondata[i].name+" : "+jsondata[i].symbol;
     opt.setAttribute("value", val);
+    opt.setAttribute("symb", jsondata[i].symbol);
     shareOptions.appendChild(opt);
 }
 
+
+
+const submitBut=document.querySelector(".formSubmit");
+
+submitBut.addEventListener("click", ()=>{
+    let temp=share1.value.split(" : ");
+    let temp2=share2.value.split(" : ");
+    let temp3=share3.value.split(" : ");
+
+    share1.value=temp[1];
+    share2.value=temp2[1];
+    share3.value=temp3[1];
+
+
+})

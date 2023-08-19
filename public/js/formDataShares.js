@@ -1,11 +1,13 @@
 const form=document.querySelector('form');
 
+
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
 
     const fd=new FormData(form);
 
     const URLdata= new URLSearchParams(fd).toString();
+
     console.log(URLdata);
     fetch('http://localhost:5000/uploadShares', {
         method: "POST",

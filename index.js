@@ -132,8 +132,6 @@ app.post("/uploadShares", middle, async(req, res)=>{
         const myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
         fs.writeFile('shareData.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
-
-        // console.log(data);
       }
   });
 })
