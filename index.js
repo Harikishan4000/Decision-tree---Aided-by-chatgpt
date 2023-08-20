@@ -115,6 +115,12 @@ app.post("/uploadShares", middle, async(req, res)=>{
   const prompt1 = req.body.share1;
   const prompt2 = req.body.share2;
   const prompt3 = req.body.share3;
+  fs.writeFile('./ShareDataAnalysis/share1Data.json','', function printed(){ console.log("ShareData1 is cleared.")});
+
+  fs.writeFile('./ShareDataAnalysis/share2Data.json','', function printed(){ console.log("ShareData2 is cleared.")});
+
+  fs.writeFile('./ShareDataAnalysis/share3Data.json','', function printed(){ console.log("ShareData3 is cleared.")});
+
 
   var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
 
@@ -132,7 +138,7 @@ app.post("/uploadShares", middle, async(req, res)=>{
       } else {
         const myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
-        fs.writeFile('share1Data.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+        fs.writeFile('./ShareDataAnalysis/share1Data.json',myData.toString(), function printed(){ console.log("ShareData1 is printed.")});
       }
   });
 
@@ -153,7 +159,7 @@ app.post("/uploadShares", middle, async(req, res)=>{
       } else {
         const myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
-        fs.writeFile('share2Data.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+        fs.writeFile('/ShareDataAnalysis/share2Data.json',myData.toString(), function printed(){ console.log("ShareData2 is printed.")});
       }
   });
 
@@ -174,9 +180,26 @@ app.post("/uploadShares", middle, async(req, res)=>{
       } else {
         const myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
-        fs.writeFile('share3Data.json',myData.toString(), function printed(){ console.log("ShareData is printed.")});
+        fs.writeFile('/ShareDataAnalysis/share3Data.json',myData.toString(), function printed(){ console.log("ShareData3 is printed.")});
       }
+
   });
+
+  //Copying json from loader to output file
+
+  fs.writeFile('/ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('...')})
+
+  fs.readFile('ShareDataAnalysis/outputSharesLoader.json', 'utf8', readingFile);
+ 
+function readingFile(error, data) {
+    if (error) {
+        console.log(error);
+    } else {
+ 
+        // Saving loader json into output file
+        fs.writeFile('ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
+    }
+}
 })
 
 

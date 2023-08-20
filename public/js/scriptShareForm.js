@@ -61,6 +61,4 @@ submitBut.addEventListener("click", ()=>{
     share1.value=temp[1];
     share2.value=temp2[1];
     share3.value=temp3[1];
-
-
 })

@@ -1,0 +1,312 @@
+[
+  {
+    "id": 0,
+    "name": "root",
+    "type": "root",
+    "level": 0,
+    "payoff": 0,
+    "probability": null,
+    "parent": null,
+    "children": [1, 2, 3]
+  },
+  {
+    "id": 1,
+    "name": "S1",
+    "type": "decision",
+    "level": 1,
+    "payoff": null,
+    "probability": null,
+    "parent": 0,
+    "children": [4, 5, 6]
+  },
+  {
+    "id": 2,
+    "name": "S2",
+    "type": "decision",
+    "level": 1,
+    "payoff": null,
+    "probability": null,
+    "parent": 0,
+    "children": [7, 8, 9]
+  },
+  {
+    "id": 3,
+    "name": "S3",
+    "type": "decision",
+    "level": 1,
+    "payoff": null,
+    "probability": 0.8,
+    "parent": 0,
+    "children": [10, 11, 12]
+  },
+  {
+    "id": 4,
+    "name": "S1Y1",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 1,
+    "children": [13, 14]
+  },
+  {
+    "id": 5,
+    "name": "S1Y2",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 1,
+    "children": [15, 16]
+  },
+  {
+    "id": 6,
+    "name": "S1Y2",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 1,
+    "children": [17, 18]
+  },
+  {
+    "id": 7,
+    "name": "S2Y1",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 2,
+    "children": [19, 20]
+  },
+  {
+    "id": 8,
+    "name": "S2Y2",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 2,
+    "children": [21, 22]
+  },
+  {
+    "id": 9,
+    "name": "S2Y3",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 2,
+    "children": [23, 24]
+  },
+  {
+    "id": 10,
+    "name": "S3Y1",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 3,
+    "children": [25, 26]
+  },
+  {
+    "id": 11,
+    "name": "S3Y2",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 3,
+    "children": [27, 28]
+  },
+  {
+    "id": 12,
+    "name": "S3Y3",
+    "type": "cost",
+    "level": 2,
+    "payoff": null,
+    "probability": null,
+    "parent": 3,
+    "children": [29, 30]
+  },
+  {
+    "id": 13,
+    "name": "S1Y1P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 4,
+    "children": []
+  },
+  {
+    "id": 14,
+    "name": "S1Y1L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 4,
+    "children": []
+  },
+  {
+    "id": 15,
+    "name": "S1Y2P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 5,
+    "children": []
+  },
+  {
+    "id": 16,
+    "name": "S1Y2L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 5,
+    "children": []
+  },
+  {
+    "id": 17,
+    "name": "S1Y3P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 6,
+    "children": []
+  },
+  {
+    "id": 18,
+    "name": "S1Y3L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 6,
+    "children": []
+  },
+  {
+    "id": 19,
+    "name": "S2Y1P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 7,
+    "children": []
+  },
+  {
+    "id": 20,
+    "name": "S2Y1L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 7,
+    "children": []
+  },
+  {
+    "id": 21,
+    "name": "S2Y2P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 8,
+    "children": []
+  },
+  {
+    "id": 22,
+    "name": "S2Y2L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 8,
+    "children": []
+  },
+  {
+    "id": 23,
+    "name": "S2Y3P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 9,
+    "children": []
+  },
+  {
+    "id": 24,
+    "name": "S1Y3L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 9,
+    "children": []
+  },
+  {
+    "id": 25,
+    "name": "S3Y1P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 10,
+    "children": []
+  },
+  {
+    "id": 26,
+    "name": "S3Y1L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 10,
+    "children": []
+  },
+  {
+    "id": 27,
+    "name": "S3Y2P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 11,
+    "children": []
+  },
+  {
+    "id": 28,
+    "name": "S3Y2L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 11,
+    "children": []
+  },
+  {
+    "id": 29,
+    "name": "S3Y3P",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 12,
+    "children": []
+  },
+  {
+    "id": 30,
+    "name": "S3Y3L",
+    "type": "cost",
+    "level": 3,
+    "payoff": null,
+    "probability": null,
+    "parent": 12,
+    "children": []
+  }
+]
