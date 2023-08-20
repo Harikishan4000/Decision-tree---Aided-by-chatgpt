@@ -121,10 +121,13 @@ app.post("/uploadShares", middle, async(req, res)=>{
 
   fs.writeFile('./ShareDataAnalysis/share3Data.json','', function printed(){ console.log("ShareData3 is cleared.")});
 
+  let i=0;
+  if(prompt1!="undefined") i++;
+  if(prompt2!="undefined") i++;
+  if(prompt3!="undefined") i++;
 
+console.log("Number of shares: ", i);
   var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
-
-  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
 
   request.get({
       url: url1,
@@ -195,7 +198,7 @@ function readingFile(error, data) {
     if (error) {
         console.log(error);
     } else {
- 
+        
         // Saving loader json into output file
         fs.writeFile('ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
     }
