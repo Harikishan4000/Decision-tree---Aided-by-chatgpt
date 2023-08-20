@@ -115,11 +115,11 @@ app.post("/uploadShares", middle, async(req, res)=>{
   const prompt1 = req.body.share1;
   const prompt2 = req.body.share2;
   const prompt3 = req.body.share3;
-  fs.writeFile('./ShareDataAnalysis/share1Data.json','', function printed(){ console.log("ShareData1 is cleared.")});
+  // fs.writeFile('./ShareDataAnalysis/share1Data.json','', function printed(){ console.log("ShareData1 is cleared.")});
 
-  fs.writeFile('./ShareDataAnalysis/share2Data.json','', function printed(){ console.log("ShareData2 is cleared.")});
+  // fs.writeFile('./ShareDataAnalysis/share2Data.json','', function printed(){ console.log("ShareData2 is cleared.")});
 
-  fs.writeFile('./ShareDataAnalysis/share3Data.json','', function printed(){ console.log("ShareData3 is cleared.")});
+  // fs.writeFile('./ShareDataAnalysis/share3Data.json','', function printed(){ console.log("ShareData3 is cleared.")});
 
   let i=0;
   if(prompt1!="undefined") i++;
@@ -139,7 +139,7 @@ console.log("Number of shares: ", i);
       } else if (res.statusCode !== 200) {
         console.log('Status:', res.statusCode);
       } else {
-        const myData=JSON.stringify(data);
+        let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
         fs.writeFile('./ShareDataAnalysis/share1Data.json',myData.toString(), function printed(){ console.log("ShareData1 is printed.")});
       }
@@ -160,7 +160,7 @@ console.log("Number of shares: ", i);
       } else if (res.statusCode !== 200) {
         console.log('Status:', res.statusCode);
       } else {
-        const myData=JSON.stringify(data);
+        let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
         fs.writeFile('/ShareDataAnalysis/share2Data.json',myData.toString(), function printed(){ console.log("ShareData2 is printed.")});
       }
@@ -181,7 +181,7 @@ console.log("Number of shares: ", i);
       } else if (res.statusCode !== 200) {
         console.log('Status:', res.statusCode);
       } else {
-        const myData=JSON.stringify(data);
+        let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
         fs.writeFile('/ShareDataAnalysis/share3Data.json',myData.toString(), function printed(){ console.log("ShareData3 is printed.")});
       }
@@ -198,7 +198,7 @@ function readingFile(error, data) {
     if (error) {
         console.log(error);
     } else {
-        
+
         // Saving loader json into output file
         fs.writeFile('ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
     }

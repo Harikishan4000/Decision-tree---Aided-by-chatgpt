@@ -9,6 +9,9 @@ var shares=[share1data, share2data, share3data]
 for(let i=0;i<3;i++){   //?traverse through the shareData.json files
     let currshare=shares[i];
 
-    
+    if(currshare){
+        output[i].name=currshare[0]["2. Symbol"];
+    }
+
 }
 
