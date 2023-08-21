@@ -308,7 +308,7 @@ body{
     }
 
     .sharesContainer{
-        transform: translate(-50%, 30%);
+        transform: translate(-50%, 20%);
 
     }
 
@@ -430,4 +430,99 @@ body{
         margin-bottom: 20px;
     }
 
-    
+    /*Mobile Portrait*/
+    @media screen and (max-width: 800px) {
+        .mega-container {
+          width: 75vw;
+          transform: translate(-55%, 5%);
+        }
+        .but {
+            width: 20vw;
+            font-size:x-small;
+        }
+        .sharesContainer{
+            width: 65vw;
+            transform: translate(-70%, 10%);
+        }
+        .maps-container {
+            width: 80vw;
+            height: 70vh;
+            transform: translate(-50%, 20%);
+        }
+        .title {
+            font-size: 5vw;
+        }
+        form label {
+            font-size: 4vw;
+        }
+        .share1, .share2, .share3{
+            width: 35vw;
+            height: 5vh;
+        }
+        .formSubmit {
+            width: 50vw;
+        }
+        .question {
+            width: 60vw;
+        }
+        .loc{
+            width: 70vw;
+        }
+    }
+
+    /*Mobile Landscape*/
+    @media screen and (max-height: 540px) {
+        body{
+            overflow: auto;
+        }
+        .mega-container{
+            width: 75vw; 
+            height: 85vh;
+            transform: translate(-55%, 5%);
+        }
+        .but {
+            transform: translate(0%, 40%);
+            font-size: small;
+        }
+        .sharesContainer{
+            width: 60vw;
+            height: 90vh;
+            transform: translate(-50%, 5%);
+        }
+        .maps-container {
+            width: 80vw;
+            height: 75vh;
+            transform: translate(-50%, 20%);
+        }
+        .maps-container form {
+            transform: translate(0%, -15%);
+        }
+        .dur {
+            height: 1vh;
+        }
+        .title {
+            font-size: medium;
+            height: fit-content;
+        }
+        form label {
+            transform: translate(0%, -50%);
+            font-size: medium;
+        }
+        .share1, .share2, .share3{
+            width: 35vw;
+            height: 2vh;
+        }
+        .formSubmit {
+            transform: translate(0%, -100%);
+            width: 50vw;
+            height: 10vh;
+            font-size: small;
+        }
+        .question {
+            transform: translate(0%, -25%);
+            width: 60vw;
+        }
+        .loc{
+            height: 10vh;
+        }
+    }
