@@ -10,14 +10,17 @@ const cors=require("cors");
 require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
 
+//Initialize Express App
 const app = express();
 
-
+//middleware
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
 
+
+//restricted resources on a web page to be accessed
 app.use(cors());
 const middle = express.urlencoded({
     extended: false,
@@ -28,31 +31,35 @@ const middle = express.urlencoded({
 
 
 
-
+//Serving static files(public folder)
 app.use(express.static(__dirname + '/public'));
 
+
+//HTTP routing using express.js
+//res.sendFile() sets the Content-Type response HTTP header field based on the filename extension
 app.get('/', (req, res)=>{
-  res.sendFile(__dirname+'/views/indexform.html')
+  res.sendFile(__dirname+'/views/indexform.html');  // GET request
 })
 
 app.get('/tree', (req, res)=>{
-  res.sendFile(__dirname+'/views/index.html')
+  res.sendFile(__dirname+'/views/index.html');// GET request
 })
 
 app.get('/sharetree', (req, res)=>{
-  res.sendFile(__dirname+'/views/indexshares.html')
+  res.sendFile(__dirname+'/views/indexshares.html');// GET request
 })
 
 app.get('/maps', (req, res)=>{
-  res.sendFile(__dirname+'/views/indexmaps.html')
+  res.sendFile(__dirname+'/views/indexmaps.html');
 })
 
-//to get output.json into public folder
+//to GET output.json (which contains the final output)
 app.get('/get-json', (req, res) => {
   
   res.sendFile(__dirname+ '/output.json');
 });
 
+//Loading the openAI key from the .env file
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -60,7 +67,7 @@ const openai = new OpenAIApi(configuration);
 
 app.post("/upload", middle, async (req, res) => {
   try {
-    fs.writeFile('./output.json','', function cleared(){ console.log("File is cleared.")});
+    fs.writeFile('./output.json','', function cleared(){ console.log("File is cleared.");});
 
     const prompt = req.body.query;
     const response = await openai.createCompletion({
@@ -81,13 +88,6 @@ app.post("/upload", middle, async (req, res) => {
     } catch (error) {
       console.log(error);
     }
-    
-    // try {
-    //   res.end('tree');
-    // } catch (error) {
-    //   console.log("aagilla");
-    // }
-    // window.location.href = __dirname+"/tree";
 
     return res.status(200).json({
       success: true,
@@ -105,9 +105,6 @@ app.post("/upload", middle, async (req, res) => {
   }
 });
 
-// const port = process.env.PORT || 5000;
-
-// app.listen(port, () => console.log(`Server listening on port ${port}`));
 
 
 app.post("/uploadShares", middle, async(req, res)=>{
@@ -115,11 +112,6 @@ app.post("/uploadShares", middle, async(req, res)=>{
   const prompt1 = req.body.share1;
   const prompt2 = req.body.share2;
   const prompt3 = req.body.share3;
-  // fs.writeFile('./ShareDataAnalysis/share1Data.json','', function printed(){ console.log("ShareData1 is cleared.")});
-
-  // fs.writeFile('./ShareDataAnalysis/share2Data.json','', function printed(){ console.log("ShareData2 is cleared.")});
-
-  // fs.writeFile('./ShareDataAnalysis/share3Data.json','', function printed(){ console.log("ShareData3 is cleared.")});
 
   let i=0;
   if(prompt1!="undefined") i++;
@@ -148,8 +140,6 @@ console.log("Number of shares: ", i);
 
   var url2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
 
-  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
-
   request.get({
       url: url2,
       json: true,
@@ -169,7 +159,6 @@ console.log("Number of shares: ", i);
 
   var url3 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt3+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
 
-  // var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=IVZT8PQDD7P489XN';
 
   request.get({
       url: url3,
