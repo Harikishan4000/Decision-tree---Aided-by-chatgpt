@@ -14,7 +14,7 @@ fetch('/get-share-output-json')
             if(share1.length<36){
                 let n=share1.length/12;
             }else
-                n=2;
+                n=3;
                 let count=0;
                 for(let k=0;k<n;k++){
                     if(k>0){
@@ -82,7 +82,7 @@ fetch('/get-share-output-json')
             if(share2.length<36){
                 let n=share2.length/12;
             }else
-                n=2;
+                n=3;
                 let count=0;
                 for(let k=0;k<n;k++){
                     if(k>0){
@@ -149,7 +149,7 @@ fetch('/get-share-output-json')
             if(share3.length<36){
                 let n=share3.length/12;
             }else
-                n=2;
+                n=3;
                 let count=0;
                 for(let k=0;k<n;k++){
                     if(k>0){
