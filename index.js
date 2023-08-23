@@ -126,6 +126,8 @@ app.post("/upload", middle, async (req, res) => {
 app.post("/uploadShares", middle, async(req, res)=>{
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
 
+  fs.writeFile('./ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('. . .')})
+
 
   const prompt1 = req.body.share1;
   const prompt2 = req.body.share2;
@@ -154,12 +156,14 @@ console.log("Number of shares: ", i);
       } else {
         let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
+        fs.writeFile('./ShareDataAnalysis/share1Data.json','', function printed(){ console.log("ShareData1 is cleared.")});
+
         fs.writeFile('./ShareDataAnalysis/share1Data.json',myData.toString(), function printed(){ console.log("ShareData1 is printed.")});
       }
   });
 
 
-  var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&apikey=E2ID69B7IB618CCM';
+  var url2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&apikey=E2ID69B7IB618CCM';
 
   request.get({
       url: url2,
@@ -174,6 +178,8 @@ console.log("Number of shares: ", i);
         let myData=JSON.stringify(data);
         // console.log("Share2: ", myData);
         // data is successfully parsed as a JSON object:
+        fs.writeFile('./ShareDataAnalysis/share2Data.json','', function printed(){ console.log("ShareData2 is cleared.")});
+
         fs.writeFile('./ShareDataAnalysis/share2Data.json',myData.toString(), function printed(){ console.log("ShareData2 is printed.")});
       }
   });
@@ -194,6 +200,8 @@ console.log("Number of shares: ", i);
       } else {
         let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
+        fs.writeFile('./ShareDataAnalysis/share3Data.json','', function printed(){ console.log("ShareData3 is cleared.")});
+
         fs.writeFile('./ShareDataAnalysis/share3Data.json',myData.toString(), function printed(){console.log("ShareData3 is printed.")});
         fs.readFile('./ShareDataAnalysis/share3Data.json', 'utf8', function(err, data){
           // data=JSON.parse(data);
