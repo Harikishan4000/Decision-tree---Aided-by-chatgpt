@@ -4,7 +4,8 @@ fetch('/get-share-output-json')
     fetch('/get-share1-json')
       .then(response => response.json())
       .then(share1json => {
-        finaljson[1].name = share1json["Meta Data"]["2. Symbol"];
+        try {
+            finaljson[1].name = share1json["Meta Data"]["2. Symbol"];
         // console.log(finaljson[1].name);
         var share1={...share1json["Monthly Adjusted Time Series"]};
             var share1avg=0;
@@ -16,15 +17,29 @@ fetch('/get-share-output-json')
                 n=2;
                 let count=0;
                 for(let k=0;k<n;k++){
-                    for(key in share1){
-                        // console.log(key);
-                        count++;
-                        if(count>12) break;
-                        share1avg+=share1[key]["4. close"]-share1[key]["1. open"];
-                        if(share1[key]["4. close"]>=share1[key]["1. open"]){
-                            share1profitcount++;
-                        }else{
-                            share1losscount++;
+                    if(k>0){
+                        for(lastkey in share1){
+                            count++;
+                            if(count>12) break;
+                            share1avg+=share1[key]["4. close"]-share1[key]["1. open"];
+                            if(share1[key]["4. close"]>=share1[key]["1. open"]){
+                                share1profitcount++;
+                            }else{
+                                share1losscount++;
+                            }
+                            let lastkey=key;
+                        }
+                    }else{
+                        for(key in share1){
+                            count++;
+                            if(count>12) break;
+                            share1avg+=share1[key]["4. close"]-share1[key]["1. open"];
+                            if(share1[key]["4. close"]>=share1[key]["1. open"]){
+                                share1profitcount++;
+                            }else{
+                                share1losscount++;
+                            }
+                            let lastkey=key;
                         }
                     }
                     share1avg/=12;
@@ -49,11 +64,16 @@ fetch('/get-share-output-json')
                         finaljson[12].probability=share1loss;
                     }
                 }
+        } catch (error) {
+            console.log("Couldn't load company 1")
+        }
+        
 
         fetch('/get-share2-json')
           .then(response => response.json())
           .then(share2json => {
-            finaljson[2].name = share2json["Meta Data"]["2. Symbol"];
+            try {
+                finaljson[2].name = share2json["Meta Data"]["2. Symbol"];
 
             var share2={...share2json["Monthly Adjusted Time Series"]};
             var share2avg=0;
@@ -65,16 +85,29 @@ fetch('/get-share-output-json')
                 n=2;
                 let count=0;
                 for(let k=0;k<n;k++){
-                    for(key in share2){
-                        count++;
-                        if(count>12) break;
-                        console.log(key);
-
-                        share2avg+=share2[key]["4. close"]-share2[key]["1. open"];
-                        if(share2[key]["4. close"]>=share2[key]["1. open"]){
-                            share2profitcount++;
-                        }else{
-                            share2losscount++;
+                    if(k>0){
+                        for(lastkey in share2){
+                            count++;
+                            if(count>12) break;
+                            share2avg+=share2[key]["4. close"]-share2[key]["1. open"];
+                            if(share2[key]["4. close"]>=share2[key]["1. open"]){
+                                share2profitcount++;
+                            }else{
+                                share2losscount++;
+                            }
+                            let lastkey=key;
+                        }
+                    }else{
+                        for(key in share2){
+                            count++;
+                            if(count>12) break;
+                            share2avg+=share2[key]["4. close"]-share2[key]["1. open"];
+                            if(share2[key]["4. close"]>=share2[key]["1. open"]){
+                                share2profitcount++;
+                            }else{
+                                share2losscount++;
+                            }
+                            let lastkey=key;
                         }
                     }
                     share2avg/=12;
@@ -99,11 +132,15 @@ fetch('/get-share-output-json')
                         finaljson[21].probability=share2loss;
                     }
                 }
+            } catch (error) {
+                console.log("Couldn't load Company 2")
+            }
 
             fetch('/get-share3-json')
               .then(response => response.json())
               .then(share3json => {
-                finaljson[3].name = share3json["Meta Data"]["2. Symbol"];
+                try {
+                    finaljson[3].name = share3json["Meta Data"]["2. Symbol"];
 
                 var share3={...share3json["Monthly Adjusted Time Series"]};
             var share3avg=0;
@@ -115,16 +152,33 @@ fetch('/get-share-output-json')
                 n=2;
                 let count=0;
                 for(let k=0;k<n;k++){
-                    for(key in share3){
-                        count++;
-                        if(count>12) break;
-                        share3avg+=share3[key]["4. close"]-share3[key]["1. open"];
-                        if(share3[key]["4. close"]>=share3[key]["1. open"]){
-                            share3profitcount++;
-                        }else{
-                            share3losscount++;
+                    if(k>0){
+                        for(lastkey in share3){
+                            count++;
+                            if(count>12) break;
+                            share3avg+=share3[key]["4. close"]-share3[key]["1. open"];
+                            if(share3[key]["4. close"]>=share3[key]["1. open"]){
+                                share3profitcount++;
+                            }else{
+                                share3losscount++;
+                            }
+                            let lastkey=key;
+                        }
+                    }else{
+                        for(key in share3){
+                            count++;
+                            if(count>12) break;
+
+                            share3avg+=share3[key]["4. close"]-share3[key]["1. open"];
+                            if(share3[key]["4. close"]>=share3[key]["1. open"]){
+                                share3profitcount++;
+                            }else{
+                                share3losscount++;
+                            }
+                            let lastkey=key;
                         }
                     }
+                    
                     share3avg/=12;
                     var share3loss=share3losscount/12;
                     var share3profit=share3profitcount/12;
@@ -146,6 +200,9 @@ fetch('/get-share-output-json')
                         finaljson[30].payoff=share3avg;
                         finaljson[30].probability=share3loss;
                     }
+                }
+                } catch (error) {
+                    console.log("Couldn't load company 3")
                 }
 
 

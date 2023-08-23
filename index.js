@@ -159,7 +159,7 @@ console.log("Number of shares: ", i);
   });
 
 
-  var url2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&apikey=E2ID69B7IB618CCM';
+  var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&apikey=E2ID69B7IB618CCM';
 
   request.get({
       url: url2,
