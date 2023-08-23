@@ -11,12 +11,6 @@ for(let i=0; i<totDivs;i++){
     gridDesign.appendChild(new_div);
 }
 
-// const sub=document.querySelector(".formSubmit");
-
-// sub.addEventListener("click", ()=>{
-//     window.location.href='/tree';
-// })
-
 const sharebut=document.querySelector(".sharebut");
 sharebut.addEventListener("click", ()=>{
     window.location.href='/sharetree';
@@ -25,12 +19,6 @@ sharebut.addEventListener("click", ()=>{
 const decisionbut=document.querySelector(".decisionbut");
 decisionbut.addEventListener("click", ()=>{
     window.location.href='/';
-    
-})
-
-const mapsbut=document.querySelector(".mapsbut");
-mapsbut.addEventListener("click", ()=>{
-    window.location.href='/maps';
     
 })
 
@@ -49,6 +37,11 @@ for(let i=0; i<Object.keys(jsondata).length;i++){
     shareOptions.appendChild(opt);
 }
 
+const sub=document.querySelector(".formSubmit");
+
+sub.addEventListener("click", ()=>{
+    window.location.href='/tree';
+})
 
 
 const submitBut=document.querySelector(".formSubmit");
@@ -65,11 +58,11 @@ submitBut.addEventListener("click", ()=>{
 
 
 
-const dur=querySelector("#duration");
 
 fetch('/get-share-output-json')
   .then(response => response.json())
   .then(finaljson => {
+        const dur=document.querySelector("#duration");
 
         fetch('/get-share1-json')
         .then(response => response.json())
@@ -338,26 +331,18 @@ fetch('/get-share-output-json')
         .catch(error => {
             console.error('Error fetching JSON: Someting wrong with share3');
         });
-
-
-        fetch('/get-json')
-            .then(response => response.json())
-            .then(jsondata => {
-                jsondata={...finaljson}
-            })
-            .catch(error => {
-            console.error('Error fetching JSON: Couldnt copy into output.json');
-            });
         
 
 
 })
 .catch(error => {
-  load.style.display="block";
-  setTimeout(function () { 
-    location.reload();
-  }, 60 * 100);
   console.error('Error fetching JSON:', error);
 });
+
+
+
+
+
+
 
 

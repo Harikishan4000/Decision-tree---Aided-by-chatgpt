@@ -126,11 +126,14 @@ app.post("/uploadShares", middle, async(req, res)=>{
   const prompt1 = req.body.share1;
   const prompt2 = req.body.share2;
   const prompt3 = req.body.share3;
-
+  const dur= req.body.duration;
+  // console.log(req.body);
   let i=0;
   if(prompt1!="undefined") i++;
   if(prompt2!="undefined") i++;
   if(prompt3!="undefined") i++;
+  fs.writeFile('./output.json', '', 'utf8', function(){console.log('Cleared final output file')})
+
 
 console.log("Number of shares: ", i);
   var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
@@ -165,7 +168,7 @@ console.log("Number of shares: ", i);
         console.log('Status:', res.statusCode);
       } else {
         let myData=JSON.stringify(data);
-        console.log("Share2: ", myData);
+        // console.log("Share2: ", myData);
         // data is successfully parsed as a JSON object:
         fs.writeFile('./ShareDataAnalysis/share2Data.json',myData.toString(), function printed(){ console.log("ShareData2 is printed.")});
       }
@@ -192,22 +195,55 @@ console.log("Number of shares: ", i);
 
   });
 
-  //Copying json from loader to output file
+    //Copying json from loader to output file
 
-  fs.writeFile('./ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('. . .')})
+    fs.writeFile('./ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('. . .')})
 
-  fs.readFile('./ShareDataAnalysis/outputSharesLoader.json', 'utf8', readingFile);
+    fs.readFile('./ShareDataAnalysis/outputSharesLoader.json', 'utf8', readingFile);
+
+  try{
+    const output = fs.readFileSync('./ShareDataAnalysis/outputShares.json', 'utf8', function(){});
+    const share1Data = fs.readFileSync('./ShareDataAnalysis/share1Data.json', 'utf8', function(){});
+    const share2Data = fs.readFileSync('./ShareDataAnalysis/share2Data.json', 'utf8', function(){});
+    const share3Data = fs.readFileSync('./ShareDataAnalysis/share3Data.json', 'utf8', function(){});
+
+    const finaljson = JSON.parse(output);
+    const share1 = JSON.parse(share1Data);
+    const share2 = JSON.parse(share2Data);
+    const share3 = JSON.parse(share3Data); 
+  
+  change_share_names(finaljson, share1, share2, share3);
+
+
+  }catch(err){
+    console.log(err);
+  }
+    
 
 function readingFile(error, data) {
     if (error) {
         console.log(error);
     } else {
-
         // Saving loader json into output file
-        fs.writeFile('./ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
+        fs.writeFile('./ShareDataAnalysis/outputShares.json', data, 'utf-8', function(){console.log('Output file is reset')});
     }
 }
+
+
+
+
+
+function change_share_names(finaljson, share1, share2, share3){
+  finaljson[1].name=share1["Meta Data"]["2. Symbol"];
+  finaljson[2].name=share2["Meta Data"]["2. Symbol"];
+  finaljson[3].name=share3["Meta Data"]["2. Symbol"];
+  let Updatedfinaljson=JSON.stringify(finaljson);
+
+  fs.writeFile('./ShareDataAnalysis/outputShares.json',Updatedfinaljson, 'utf8', function printed(){console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")});
+  }
 })
 
 
 app.listen(5000);
+
+
