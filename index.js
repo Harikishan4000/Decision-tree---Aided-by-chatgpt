@@ -127,7 +127,7 @@ app.post("/uploadShares", middle, async(req, res)=>{
   const prompt2 = req.body.share2;
   const prompt3 = req.body.share3;
   const dur= req.body.duration;
-  // console.log(req.body);
+  console.log(req.body);
   let i=0;
   if(prompt1!="undefined") i++;
   if(prompt2!="undefined") i++;
@@ -136,7 +136,7 @@ app.post("/uploadShares", middle, async(req, res)=>{
 
 
 console.log("Number of shares: ", i);
-  var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+  var url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt1+'&apikey=E2ID69B7IB618CCM';
 
   request.get({
       url: url1,
@@ -155,7 +155,7 @@ console.log("Number of shares: ", i);
   });
 
 
-  var url2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+  var url2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt2+'&apikey=E2ID69B7IB618CCM';
 
   request.get({
       url: url2,
@@ -175,7 +175,7 @@ console.log("Number of shares: ", i);
   });
 
 
-  var url3 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt3+'&outputsize=compact&apikey=IVZT8PQDD7P489XN';
+  var url3 = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+prompt3+'&apikey=E2ID69B7IB618CCM';
 
 
   request.get({
@@ -201,49 +201,28 @@ console.log("Number of shares: ", i);
 
     fs.readFile('./ShareDataAnalysis/outputSharesLoader.json', 'utf8', readingFile);
 
-  try{
-    const output = fs.readFileSync('./ShareDataAnalysis/outputShares.json', 'utf8', function(){});
-    const share1Data = fs.readFileSync('./ShareDataAnalysis/share1Data.json', 'utf8', function(){});
-    const share2Data = fs.readFileSync('./ShareDataAnalysis/share2Data.json', 'utf8', function(){});
-    const share3Data = fs.readFileSync('./ShareDataAnalysis/share3Data.json', 'utf8', function(){});
 
-    const finaljson = JSON.parse(output);
-    const share1 = JSON.parse(share1Data);
-    const share2 = JSON.parse(share2Data);
-    const share3 = JSON.parse(share3Data); 
+
   
-  change_share_names(finaljson, share1, share2, share3);
-
-
-  }catch(err){
-    console.log(err);
-  }
-    
-
 function readingFile(error, data) {
     if (error) {
         console.log(error);
     } else {
         // Saving loader json into output file
-        fs.writeFile('./ShareDataAnalysis/outputShares.json', data, 'utf-8', function(){console.log('Output file is reset')});
+        fs.writeFile('./ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
     }
 }
-
-
-
-
-
-function change_share_names(finaljson, share1, share2, share3){
-  finaljson[1].name=share1["Meta Data"]["2. Symbol"];
-  finaljson[2].name=share2["Meta Data"]["2. Symbol"];
-  finaljson[3].name=share3["Meta Data"]["2. Symbol"];
-  let Updatedfinaljson=JSON.stringify(finaljson);
-
-  fs.writeFile('./ShareDataAnalysis/outputShares.json',Updatedfinaljson, 'utf8', function printed(){console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")});
-  }
 })
 
 
 app.listen(5000);
 
 
+app.post('/updateoutputshare', middle, async(req, res)=>{
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  fs.writeFile('./ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('. . .')})
+
+  // console.log(req.body)
+      fs.writeFile('./ShareDataAnalysis/outputShares.json', JSON.stringify(req.body), 'utf8', function(){console.log('Names updated')});
+
+})

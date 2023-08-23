@@ -1,74 +1,12 @@
-import jsondata from './listing_status.json' assert { type: 'json' };
-
-
-const gridDesign=document.querySelector(".gridContainer");
-let totDivs= 300;
-
-//? Add 300 gridItem with empty value string and naming all gridItems with succeeding number.
-for(let i=0; i<totDivs;i++){
-    var new_div=document.createElement("div");
-    new_div.classList.add("grid-item");
-    gridDesign.appendChild(new_div);
-}
-
-const sharebut=document.querySelector(".sharebut");
-sharebut.addEventListener("click", ()=>{
-    window.location.href='/sharetree';
-})
-
-const decisionbut=document.querySelector(".decisionbut");
-decisionbut.addEventListener("click", ()=>{
-    window.location.href='/';
-    
-})
-
-const shareOptions=document.querySelector("#shares");  
-let share1=document.querySelector('.share1');
-let share2=document.querySelector('.share2');
-let share3=document.querySelector('.share3');
-
-
-
-for(let i=0; i<Object.keys(jsondata).length;i++){
-    let opt=document.createElement("option");
-    let val=jsondata[i].name+" : "+jsondata[i].symbol;
-    opt.setAttribute("value", val);
-    opt.setAttribute("symb", jsondata[i].symbol);
-    shareOptions.appendChild(opt);
-}
-
-const sub=document.querySelector(".formSubmit");
-
-sub.addEventListener("click", ()=>{
-    window.location.href='/tree';
-})
-
-
-const submitBut=document.querySelector(".formSubmit");
-
-submitBut.addEventListener("click", ()=>{
-    let temp=share1.value.split(" : ");
-    let temp2=share2.value.split(" : ");
-    let temp3=share3.value.split(" : ");
-
-    share1.value=temp[1];
-    share2.value=temp2[1];
-    share3.value=temp3[1];
-})
-
-
-
-
 fetch('/get-share-output-json')
   .then(response => response.json())
   .then(finaljson => {
-        const dur=document.querySelector("#duration");
-
-        fetch('/get-share1-json')
-        .then(response => response.json())
-        .then(share1json => {
-            finaljson[1].name = share1json["Meta Data"]["2. Symbol"];
-            var share1={...share1json["Monthly Adjusted Time Series"]};
+    fetch('/get-share1-json')
+      .then(response => response.json())
+      .then(share1 => {
+        finaljson[1].name = share1["Meta Data"]["2. Symbol"];
+        // console.log(finaljson[1].name);
+        var share1={...share1json["Monthly Adjusted Time Series"]};
             var share1avg=0;
             var share1losscount=0;
             var share1profitcount=0
@@ -147,18 +85,12 @@ fetch('/get-share-output-json')
                     }
                 }
             }
-            
-        })
-        .catch(error => {
-            console.error('Error fetching JSON: Someting wrong with share1');
-            
-        });
-
 
         fetch('/get-share2-json')
-        .then(response => response.json())
-        .then(share2json => {
-            finaljson[2].name = share2json["Meta Data"]["2. Symbol"];
+          .then(response => response.json())
+          .then(share2 => {
+            finaljson[2].name = share2["Meta Data"]["2. Symbol"];
+
             var share2={...share2json["Monthly Adjusted Time Series"]};
             var share2avg=0;
             var share2losscount=0;
@@ -238,19 +170,13 @@ fetch('/get-share-output-json')
                     }
                 }
             }
-            
-        })
-        .catch(error => {
-            console.error('Error fetching JSON: Someting wrong with share2');
-        });
 
-        
+            fetch('/get-share3-json')
+              .then(response => response.json())
+              .then(share3 => {
+                finaljson[3].name = share3["Meta Data"]["2. Symbol"];
 
-        fetch('/get-share3-json')
-        .then(response => response.json())
-        .then(share3json => {
-            finaljson[3].name = share3json["Meta Data"]["2. Symbol"];
-            var share3={...share3json["Monthly Adjusted Time Series"]};
+                var share3={...share3json["Monthly Adjusted Time Series"]};
             var share3avg=0;
             var share3losscount=0;
             var share3profitcount=0
@@ -329,31 +255,31 @@ fetch('/get-share-output-json')
                     }
                 }
             }
-            
-        })
-        .catch(error => {
-            console.error('Error fetching JSON: Someting wrong with share3');
-        });
-        
 
 
+                console.log(finaljson);
+                var finalData = { ...finaljson };
 
-        fetch('http://localhost:5000/updateoutputshare', {
+                fetch('http://localhost:5000/updateoutputshare', {
                   method: "POST",
-                  body: JSON.stringify(finaljson),
+                  body: JSON.stringify(finalData),
                   headers: {
                     'Content-type': 'application/json',
                   }
                 });
-})
-.catch(error => {
-  console.error('Error fetching JSON:', error);
-});
-
-
-
-
-
-
-
-
+              })
+              .catch(error => {
+                console.error('Error fetching JSON:', error);
+              });
+          })
+          .catch(error => {
+            console.error('Error fetching JSON:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error fetching JSON:', error);
+      });
+  })
+  .catch(error => {
+    console.error('Error fetching JSON:', error);
+  });

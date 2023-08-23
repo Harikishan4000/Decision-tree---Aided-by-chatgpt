@@ -24,9 +24,3 @@ decisionbut.addEventListener("click", ()=>{
     window.location.href='/';
     
 })
-
-const mapsbut=document.querySelector(".mapsbut");
-mapsbut.addEventListener("click", ()=>{
-    window.location.href='/maps';
-    
-})
