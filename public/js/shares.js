@@ -17,6 +17,8 @@ fetch('/get-share-output-json')
                 n=3;
                 let count=0;
                 for(let k=0;k<n;k++){
+                    let lastkey;
+
                     if(k>0){
                         for(lastkey in share1){
                             count++;
@@ -27,7 +29,7 @@ fetch('/get-share-output-json')
                             }else{
                                 share1losscount++;
                             }
-                            let lastkey=key;
+                            lastkey=key;
                         }
                     }else{
                         for(key in share1){
@@ -39,7 +41,7 @@ fetch('/get-share-output-json')
                             }else{
                                 share1losscount++;
                             }
-                            let lastkey=key;
+                            lastkey=key;
                         }
                     }
                     share1avg/=12;
@@ -85,29 +87,31 @@ fetch('/get-share-output-json')
                 n=3;
                 let count=0;
                 for(let k=0;k<n;k++){
+                    let lastkey;
                     if(k>0){
                         for(lastkey in share2){
                             count++;
-                            if(count>12) break;
                             share2avg+=share2[key]["4. close"]-share2[key]["1. open"];
                             if(share2[key]["4. close"]>=share2[key]["1. open"]){
                                 share2profitcount++;
                             }else{
                                 share2losscount++;
                             }
-                            let lastkey=key;
+                            lastkey=key;
+                            if(count>12) break;
+
                         }
                     }else{
                         for(key in share2){
                             count++;
-                            if(count>12) break;
                             share2avg+=share2[key]["4. close"]-share2[key]["1. open"];
                             if(share2[key]["4. close"]>=share2[key]["1. open"]){
                                 share2profitcount++;
                             }else{
                                 share2losscount++;
                             }
-                            let lastkey=key;
+                            lastkey=key;
+                            if(count>12) break;
                         }
                     }
                     share2avg/=12;
@@ -152,6 +156,8 @@ fetch('/get-share-output-json')
                 n=3;
                 let count=0;
                 for(let k=0;k<n;k++){
+                    let lastkey;
+
                     if(k>0){
                         for(lastkey in share3){
                             count++;
@@ -162,7 +168,7 @@ fetch('/get-share-output-json')
                             }else{
                                 share3losscount++;
                             }
-                            let lastkey=key;
+                            lastkey=key;
                         }
                     }else{
                         for(key in share3){
@@ -175,7 +181,7 @@ fetch('/get-share-output-json')
                             }else{
                                 share3losscount++;
                             }
-                            let lastkey=key;
+                            lastkey=key;
                         }
                     }
                     
