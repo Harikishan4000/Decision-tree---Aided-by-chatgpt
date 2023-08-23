@@ -10,24 +10,4 @@ If it isn't broken your pay off is 0.
 
 
 
-Should choose between building small or large facility.
-There are two scenarios:
-1. Demand can be low with a probability of 40%. 
-2. Demand can be high with a probability of 60%.
-If small facility is built and If demand is high, three options:
-1. If no expand payoff is 200000.
-2. If expand payoff 270000.
-3. If wait for a while payoff is 223000.
-If small facility is built and If demand is low, one option:
-1. no expand with a payoff of 200000.
-If large facility is built and demand is low, two options:
-1. If do nothing payoff is 40000.
-2. If advertise we have two options: 
-2.1. Modest with probability of 30% and payoff of 200000.
-2.2. Sizable with a probaility of 70% and payoff of 220000.
-If large facility is built and If demand is high, one option:
-1. Do nothing payoff is 800000.
-
-
-
 A manager must decide on the size of a video arcade to construct. The manager has narrowed the choices to two: large or small. Demand can be either low or high with probabilities of 0.4 and 0.6 respectively. If small facility is built, and at low demand the payoff is Rs 40000. If small facility is built and demand is high then there are three options again: do nothing (Rs 40000) and do overtime (Rs 55000) and expand (Rs 55000).  If building large facility is considered and the demand is low you have two options: do nothing (Rs 10000) and reduce prices (Rs 50000). If large facility is built and demand is high the payoff is Rs 70000.
