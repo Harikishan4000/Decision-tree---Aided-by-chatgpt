@@ -310,8 +310,14 @@ window.addEventListener("resize", ()=>{
       try{
         // console.log(data)
         decision_tree();
-        document.querySelector(".result").classList.add("show")
-        if(data[0].payoff!=null){
+        document.querySelector(".result").classList.add("show");
+        if(data[0].payoff<0){
+          result.innerHTML=data[0].name+" : "+(data[0].payoff*100)+"% loss" ;
+        }
+        if(data[0].payoff>0&&data[0].payoff<1){
+          result.innerHTML=data[0].name+" : "+(data[0].payoff*100)+"% profit" ;
+        }
+        else if(data[0].payoff!=null){
           result.innerHTML=data[0].name+" : "+(data[0].payoff+rootCost);
         }
         else{
