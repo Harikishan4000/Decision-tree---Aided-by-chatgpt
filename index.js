@@ -79,6 +79,8 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 app.post("/upload", middle, async (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+
   try {
     fs.writeFile('./output.json','', function cleared(){ console.log("File is cleared.");});
 
@@ -122,6 +124,8 @@ app.post("/upload", middle, async (req, res) => {
 
 
 app.post("/uploadShares", middle, async(req, res)=>{
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+
 
   const prompt1 = req.body.share1;
   const prompt2 = req.body.share2;
@@ -191,6 +195,11 @@ console.log("Number of shares: ", i);
         let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
         fs.writeFile('./ShareDataAnalysis/share3Data.json',myData.toString(), function printed(){console.log("ShareData3 is printed.")});
+        fs.readFile('./ShareDataAnalysis/share3Data.json', 'utf8', function(err, data){
+          // data=JSON.parse(data);
+          console.log("Data",data["Monthly Adjusted Time Series"]);
+        })
+
       }
 
   });
@@ -215,7 +224,6 @@ function readingFile(error, data) {
 })
 
 
-app.listen(5000);
 
 
 app.post('/updateoutputshare', middle, async(req, res)=>{
@@ -225,4 +233,9 @@ app.post('/updateoutputshare', middle, async(req, res)=>{
   // console.log(req.body)
       fs.writeFile('./ShareDataAnalysis/outputShares.json', JSON.stringify(req.body), 'utf8', function(){console.log('Names updated')});
 
+      fs.readFile('./ShareDataAnalysis/outputShares.json', 'utf8', function(){
+        fs.writeFile('./output.json', JSON.stringify(req.body), 'utf8', function(){console.log('Names finalized')});
+      })
 })
+
+app.listen(5000);
