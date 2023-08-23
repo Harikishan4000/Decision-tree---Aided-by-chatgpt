@@ -3,7 +3,7 @@
 [
   {
     "id": 0,
-    "name": "root",
+    "name": "root node",
     "type": "root",
     "level": 0,
     "payoff": null,
@@ -13,7 +13,7 @@
   },
   {
     "id": 1,
-    "name": "small",
+    "name": "small facility",
     "type": "decision",
     "level": 1,
     "payoff": null,
@@ -23,7 +23,7 @@
   },
   {
     "id": 2,
-    "name": "large",
+    "name": "large facility",
     "type": "decision",
     "level": 1,
     "payoff": null,
@@ -56,10 +56,10 @@
     "name": "low demand",
     "type": "cost",
     "level": 2,
-    "payoff": null,
+    "payoff": 10000,
     "probability": 0.4,
     "parent": 2,
-    "children": [10, 11]
+    "children": [10]
   },
   {
     "id": 6,
@@ -103,16 +103,6 @@
   },
   {
     "id": 10,
-    "name": "do nothing",
-    "type": "cost",
-    "level": 3,
-    "payoff": 10000,
-    "probability": null,
-    "parent": 5,
-    "children": []
-  },
-  {
-    "id": 11,
     "name": "reduce prices",
     "type": "cost",
     "level": 3,

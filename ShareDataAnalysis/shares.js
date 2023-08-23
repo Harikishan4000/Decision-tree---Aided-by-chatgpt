@@ -15,3 +15,9 @@ for(let i=0;i<3;i++){   //?traverse through the shareData.json files
 
 }
 
+
+const sub=document.querySelector(".formSubmit");
+
+sub.addEventListener("click", ()=>{
+    window.location.href='/tree';
+})

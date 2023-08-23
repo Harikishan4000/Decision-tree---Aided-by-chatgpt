@@ -59,6 +59,19 @@ app.get('/get-json', (req, res) => {
   res.sendFile(__dirname+ '/output.json');
 });
 
+app.get('/get-share-output-json', (req, res)=>{
+  res.sendFile(__dirname+'/ShareDataAnalysis/outputShares.json')
+})
+app.get('/get-share1-json', (req, res)=>{
+  res.sendFile(__dirname+'/ShareDataAnalysis/share1Data.json')
+})
+app.get('/get-share2-json', (req, res)=>{
+  res.sendFile(__dirname+'/ShareDataAnalysis/share2Data.json')
+})
+app.get('/get-share3-json', (req, res)=>{
+  res.sendFile(__dirname+'/ShareDataAnalysis/share3Data.json')
+})
+
 //Loading the openAI key from the .env file
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -152,8 +165,9 @@ console.log("Number of shares: ", i);
         console.log('Status:', res.statusCode);
       } else {
         let myData=JSON.stringify(data);
+        console.log("Share2: ", myData);
         // data is successfully parsed as a JSON object:
-        fs.writeFile('/ShareDataAnalysis/share2Data.json',myData.toString(), function printed(){ console.log("ShareData2 is printed.")});
+        fs.writeFile('./ShareDataAnalysis/share2Data.json',myData.toString(), function printed(){ console.log("ShareData2 is printed.")});
       }
   });
 
@@ -173,24 +187,24 @@ console.log("Number of shares: ", i);
       } else {
         let myData=JSON.stringify(data);
         // data is successfully parsed as a JSON object:
-        fs.writeFile('/ShareDataAnalysis/share3Data.json',myData.toString(), function printed(){ console.log("ShareData3 is printed.")});
+        fs.writeFile('./ShareDataAnalysis/share3Data.json',myData.toString(), function printed(){console.log("ShareData3 is printed.")});
       }
 
   });
 
   //Copying json from loader to output file
 
-  fs.writeFile('/ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('...')})
+  fs.writeFile('./ShareDataAnalysis/outputShares.json', '', 'utf8', function(){console.log('. . .')})
 
-  fs.readFile('ShareDataAnalysis/outputSharesLoader.json', 'utf8', readingFile);
- 
+  fs.readFile('./ShareDataAnalysis/outputSharesLoader.json', 'utf8', readingFile);
+
 function readingFile(error, data) {
     if (error) {
         console.log(error);
     } else {
 
         // Saving loader json into output file
-        fs.writeFile('ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
+        fs.writeFile('./ShareDataAnalysis/outputShares.json', data, 'utf8', function(){console.log('Output file is reset')});
     }
 }
 })
